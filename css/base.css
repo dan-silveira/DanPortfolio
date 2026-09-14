@@ -1,0 +1,268 @@
+/* ==========================================================================
+   Base: reset and element defaults
+   Depends on tokens.css. Styles bare elements only — no classes.
+   ========================================================================== */
+
+/* Self-hosted webfonts go here once the real typefaces are in assets/fonts,
+   then point --font-display / --font-text at the family names.
+
+   @font-face {
+     font-family: "Display";
+     src: url("/assets/fonts/display.woff2") format("woff2");
+     font-weight: 400 700;
+     font-display: swap;
+   }
+*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  /* Anchor links and in-page nav land below the sticky header instead of
+     underneath it. */
+  scroll-padding-top: var(--space-3xl);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-text);
+  font-size: var(--step-0);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---- Headings ----------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--step-5);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-size: var(--step-2);
+}
+
+h4 {
+  font-size: var(--step-1);
+}
+
+/* ---- Text --------------------------------------------------------------- */
+
+p,
+li,
+dd,
+blockquote {
+  text-wrap: pretty;
+}
+
+/* Paragraphs inside prose get a readable measure; standalone paragraphs in
+   layout components are constrained by their container instead. */
+p {
+  max-width: var(--measure);
+}
+
+strong,
+b {
+  font-weight: var(--weight-bold);
+}
+
+small {
+  font-size: var(--step--1);
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+blockquote {
+  border-left: var(--border-width) solid var(--color-line);
+  padding-left: var(--space-m);
+}
+
+hr {
+  border: 0;
+  border-top: var(--border-width) solid var(--color-line);
+  margin-block: var(--space-xl);
+}
+
+/* ---- Links -------------------------------------------------------------- */
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* ---- Lists -------------------------------------------------------------- */
+
+ul,
+ol {
+  padding-left: 1.25em;
+}
+
+li + li {
+  margin-top: var(--space-2xs);
+}
+
+/* ---- Media -------------------------------------------------------------- */
+
+img,
+picture,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Placeholder background so un-exported images still occupy their slot and
+   layout can be judged before assets land. Remove once assets are in. */
+img {
+  background-color: var(--color-surface);
+}
+
+svg {
+  fill: currentColor;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  margin-top: var(--space-xs);
+}
+
+/* ---- Forms -------------------------------------------------------------- */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ---- Tables ------------------------------------------------------------- */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border-bottom: var(--border-width) solid var(--color-line);
+  padding: var(--space-xs);
+  text-align: left;
+}
+
+/* ---- Focus -------------------------------------------------------------- */
+
+/* Keyboard-only focus ring. Never remove this without an equally visible
+   replacement — it is the primary affordance for keyboard navigation. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-s);
+}
+
+/* ---- Accessibility helpers ---------------------------------------------- */
+
+/* Visually hidden but available to screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* First tabbable element on every page; stays offscreen until focused. */
+.skip-link {
+  position: absolute;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  z-index: var(--z-skip-link);
+  transform: translateY(-150%);
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+  padding: var(--space-2xs) var(--space-s);
+  border-radius: var(--radius-m);
+  text-decoration: none;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  color: var(--color-accent-ink);
+}
+
+/* ---- Reduced motion ----------------------------------------------------- */
+
+/* Zeroing the duration tokens disables component animation globally, so
+   individual components do not each need their own media query. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

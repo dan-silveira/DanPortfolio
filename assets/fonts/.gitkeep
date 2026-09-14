@@ -1,0 +1,2 @@
+# Self-hosted webfonts (prefer .woff2).
+# Declare @font-face in css/base.css and point --font-* tokens at the family.

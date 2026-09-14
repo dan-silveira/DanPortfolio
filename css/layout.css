@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Layout: containers, grids, and vertical rhythm
+   Reusable structural primitives. Page-specific composition lives in css/pages.
+   ========================================================================== */
+
+/* ---- Page shell ---------------------------------------------------------
+   Sticky footer: main grows to fill the viewport so short pages do not leave
+   the footer floating mid-screen. */
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1 0 auto;
+}
+
+/* ---- Container ----------------------------------------------------------
+   Centers content and supplies the page gutter. Every full-width section
+   should wrap its content in one of these rather than setting its own padding. */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+/* ---- Section rhythm -----------------------------------------------------
+   Sections own their vertical spacing so pages do not need margin overrides. */
+
+.section {
+  padding-block: var(--space-2xl);
+}
+
+.section--tight {
+  padding-block: var(--space-xl);
+}
+
+.section--loose {
+  padding-block: var(--space-3xl);
+}
+
+/* Alternate background band. Pairs with .section for full-bleed color. */
+.section--surface {
+  background-color: var(--color-surface);
+}
+
+/* Section heading block: eyebrow label plus title. */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-l);
+}
+
+.section-header__eyebrow {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* ---- Stack --------------------------------------------------------------
+   Vertical flow with a single consistent gap. The default covers most prose;
+   the modifiers handle denser or airier groupings. */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.stack--2xs { gap: var(--space-2xs); }
+.stack--xs { gap: var(--space-xs); }
+.stack--s { gap: var(--space-s); }
+.stack--l { gap: var(--space-l); }
+.stack--xl { gap: var(--space-xl); }
+
+/* ---- Cluster ------------------------------------------------------------
+   Horizontal group that wraps: tag lists, button rows, inline meta. */
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.cluster--between {
+  justify-content: space-between;
+}
+
+/* ---- Auto grid ----------------------------------------------------------
+   Responsive columns with no media queries: items grow until they hit the
+   minimum width, then wrap. --grid-min sets that threshold per instance. */
+
+.grid {
+  display: grid;
+  gap: var(--space-l);
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min, 20rem), 100%), 1fr));
+}
+
+/* Fixed column counts for layouts that must not reflow arbitrarily.
+   Both collapse to a single column on narrow screens. */
+
+.grid--2,
+.grid--3 {
+  display: grid;
+  gap: var(--space-l);
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 48rem) {
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---- Sidebar ------------------------------------------------------------
+   Content plus a narrow rail (case study metadata). Stacks on narrow screens. */
+
+.with-sidebar {
+  display: grid;
+  gap: var(--space-l);
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 56rem) {
+  .with-sidebar {
+    grid-template-columns: minmax(0, 1fr) 16rem;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .with-sidebar__aside {
+    position: sticky;
+    top: var(--space-xl);
+  }
+}
+
+/* ---- Full-bleed ---------------------------------------------------------
+   Escapes the container to span the viewport, for wide case study imagery. */
+
+.full-bleed {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+/* ---- Aspect ratio boxes -------------------------------------------------
+   Reserve image space before assets load so the page does not shift.
+   Adjust ratios once real export dimensions are confirmed. */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-m);
+}
+
+.frame > img,
+.frame > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame--wide { aspect-ratio: 16 / 9; }
+.frame--photo { aspect-ratio: 4 / 3; }
+.frame--square { aspect-ratio: 1; }
+.frame--portrait { aspect-ratio: 3 / 4; }
+
+/* ---- Utilities ---------------------------------------------------------- */
+
+.measure {
+  max-width: var(--measure);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-ink-muted);
+}
+
+.text-balance {
+  text-wrap: balance;
+}

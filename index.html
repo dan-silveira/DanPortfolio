@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dan — UX Designer</title>
+  <meta name="description" content="Portfolio of Dan, a UX designer focused on research-led product design."><!-- TODO: confirm copy -->
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dan — UX Designer">
+  <meta property="og:description" content="Portfolio of Dan, a UX designer focused on research-led product design.">
+  <meta property="og:image" content="/assets/images/og-image.png"><!-- TODO: 1200x630 export -->
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml"><!-- TODO: favicon -->
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/home.css">
+
+  <!-- Scroll-reveal starts hidden and is revealed by js/main.js. Without
+       JavaScript there is nothing to reveal it, so show it up front. -->
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1; transform: none; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared header — keep in sync across all pages -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="/">Dan</a><!-- TODO: confirm logo mark or wordmark -->
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/work/">Work</a></li>
+          <li><a class="site-nav__link" href="#about">About</a></li>
+          <li><a class="site-nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+
+    <!-- Hero -->
+    <section class="section--loose hero">
+      <div class="container">
+        <p class="hero__eyebrow">UX Designer</p><!-- TODO: confirm role line -->
+        <h1 class="hero__title">
+          Placeholder headline stating what you do and who you do it for.
+        </h1>
+        <p class="hero__lede">
+          Placeholder supporting sentence with a little more detail about your
+          practice, the kinds of problems you take on, and the outcomes you drive.
+        </p>
+        <div class="cluster hero__actions">
+          <a class="button button--primary" href="/work/">View work</a>
+          <a class="button button--secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="section" aria-labelledby="selected-work-title">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-header__eyebrow">Selected work</p>
+          <h2 id="selected-work-title">Case studies</h2>
+        </div>
+
+        <div class="stack stack--xl">
+
+          <article class="project-card project-card--featured" data-reveal>
+            <div class="project-card__media frame frame--wide">
+              <img src="/assets/images/project-one-thumb.png" alt="" width="1200" height="675">
+              <!-- TODO: thumbnail export + alt text -->
+            </div>
+            <div class="stack stack--s">
+              <p class="project-card__meta">2026 &middot; Product design</p>
+              <h3 class="project-card__title">
+                <a class="project-card__link" href="/work/project-one/">Project One</a>
+              </h3>
+              <p class="project-card__summary">
+                One or two sentences framing the problem and the result, written to
+                make someone want to open the case study.
+              </p>
+              <ul class="tag-list">
+                <li><span class="tag">User research</span></li>
+                <li><span class="tag">Design system</span></li>
+                <li><span class="tag">Prototyping</span></li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="home__work-link">
+          <a class="link-arrow" href="/work/">See all work</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section--surface" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="grid--2">
+          <div class="stack">
+            <div class="section-header">
+              <p class="section-header__eyebrow">About</p>
+              <h2 id="about-title">A short introduction</h2>
+            </div>
+            <p>
+              Placeholder biography paragraph. Two or three sentences on your
+              background, how you approach design problems, and what you are
+              looking for next.
+            </p>
+            <p>
+              Placeholder second paragraph covering tools, collaboration style,
+              or relevant domain experience.
+            </p>
+          </div>
+
+          <div class="frame frame--portrait about__portrait">
+            <img src="/assets/images/portrait.png" alt="" width="900" height="1200">
+            <!-- TODO: portrait export + alt text -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--loose contact" id="contact" aria-labelledby="contact-title">
+      <div class="container text-center stack stack--l">
+        <div class="stack stack--s">
+          <h2 id="contact-title" class="contact__title">Let's work together</h2>
+          <p class="contact__lede">
+            Placeholder line inviting people to reach out about roles or projects.
+          </p>
+        </div>
+        <div class="cluster contact__actions">
+          <a class="button button--primary" href="mailto:hello@example.com">Email me</a>
+          <!-- TODO: confirm email address -->
+          <a class="button button--secondary" href="https://www.linkedin.com/" rel="noopener">LinkedIn</a>
+          <!-- TODO: confirm profile URL -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared footer — keep in sync across all pages -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <p class="site-footer__tagline">Designing clear, humane software.</p>
+        <!-- TODO: confirm footer tagline -->
+
+        <nav aria-label="Footer">
+          <p class="site-footer__heading">Site</p>
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/work/">Work</a></li>
+            <li><a href="/#about">About</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <p class="site-footer__heading">Elsewhere</p>
+          <ul class="site-footer__links">
+            <li><a href="mailto:hello@example.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="site-footer__meta">&copy; 2026 Dan. Built by hand.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--
+  CASE STUDY TEMPLATE
+  Copy this folder to work/<project-slug>/ for each new project, then update:
+    1. <title>, description, and Open Graph tags below
+    2. The hero title, meta rail, and section content
+    3. The "next project" link at the bottom
+    4. Add a matching card to the grid in /work/index.html
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Project One — Dan</title>
+  <meta name="description" content="Case study: Project One."><!-- TODO: confirm copy -->
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Project One — Dan">
+  <meta property="og:description" content="Case study: Project One.">
+  <meta property="og:image" content="/assets/images/project-one-thumb.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/case-study.css">
+
+  <!-- Scroll-reveal starts hidden and is revealed by js/main.js. Without
+       JavaScript there is nothing to reveal it, so show it up front. -->
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1; transform: none; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared header — keep in sync across all pages -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="/">Dan</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="/work/">Work</a></li>
+          <li><a class="site-nav__link" href="/#about">About</a></li>
+          <li><a class="site-nav__link" href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+    <article class="case-study">
+
+      <!-- Hero -->
+      <header class="section--tight case-hero">
+        <div class="container">
+          <nav class="case-hero__back" aria-label="Breadcrumb">
+            <a class="link-back" href="/work/">All work</a>
+          </nav>
+
+          <h1 class="case-hero__title">Project One</h1>
+          <p class="case-hero__lede">
+            One-sentence summary of the project: the product, the audience, and the
+            headline outcome.
+          </p>
+        </div>
+      </header>
+
+      <!-- Hero image -->
+      <div class="container case-hero__media">
+        <div class="frame frame--wide">
+          <img src="/assets/images/project-one-hero.png" alt="" width="1600" height="900">
+          <!-- TODO: hero export + alt text -->
+        </div>
+      </div>
+
+      <!-- Body: prose column plus sticky metadata rail -->
+      <div class="section">
+        <div class="container with-sidebar">
+
+          <div class="with-sidebar__content stack stack--xl">
+
+            <!-- Overview -->
+            <section class="case-section" aria-labelledby="overview-title">
+              <h2 id="overview-title" class="case-section__title">Overview</h2>
+              <div class="prose stack stack--s">
+                <p>
+                  Placeholder context paragraph: what the product is, who uses it,
+                  and why this work was commissioned.
+                </p>
+              </div>
+            </section>
+
+            <!-- Problem -->
+            <section class="case-section" aria-labelledby="problem-title">
+              <h2 id="problem-title" class="case-section__title">The problem</h2>
+              <div class="prose stack stack--s">
+                <p>
+                  Placeholder problem statement. Describe the user pain and the
+                  business cost of leaving it unsolved.
+                </p>
+                <p>
+                  Include the evidence that established the problem — research
+                  findings, support tickets, analytics, or stakeholder interviews.
+                </p>
+              </div>
+            </section>
+
+            <!-- Research -->
+            <section class="case-section" aria-labelledby="research-title">
+              <h2 id="research-title" class="case-section__title">Research</h2>
+              <div class="prose stack stack--s">
+                <p>
+                  Placeholder description of methods, participants, and what you
+                  learned that changed your direction.
+                </p>
+              </div>
+
+              <figure class="case-figure">
+                <div class="frame frame--photo">
+                  <img src="/assets/images/project-one-research.png" alt="" width="1200" height="900">
+                  <!-- TODO: research artifact export + alt text -->
+                </div>
+                <figcaption>Placeholder caption describing what this artifact shows.</figcaption>
+              </figure>
+            </section>
+
+            <!-- Process -->
+            <section class="case-section" aria-labelledby="process-title">
+              <h2 id="process-title" class="case-section__title">Process</h2>
+              <div class="prose stack stack--s">
+                <p>
+                  Placeholder walkthrough of explorations, the options you weighed,
+                  and the reasoning behind the direction you chose.
+                </p>
+              </div>
+
+              <div class="grid--2 case-figure">
+                <figure>
+                  <div class="frame frame--photo">
+                    <img src="/assets/images/project-one-process-1.png" alt="" width="1200" height="900">
+                  </div>
+                  <figcaption>Placeholder caption — early exploration.</figcaption>
+                </figure>
+                <figure>
+                  <div class="frame frame--photo">
+                    <img src="/assets/images/project-one-process-2.png" alt="" width="1200" height="900">
+                  </div>
+                  <figcaption>Placeholder caption — refined direction.</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <!-- Solution -->
+            <section class="case-section" aria-labelledby="solution-title">
+              <h2 id="solution-title" class="case-section__title">The solution</h2>
+              <div class="prose stack stack--s">
+                <p>
+                  Placeholder description of the final design and the specific
+                  decisions that make it work.
+                </p>
+              </div>
+
+              <figure class="case-figure">
+                <div class="frame frame--wide">
+                  <img src="/assets/images/project-one-solution.png" alt="" width="1600" height="900">
+                </div>
+                <figcaption>Placeholder caption describing the final screens.</figcaption>
+              </figure>
+            </section>
+
+            <!-- Outcome -->
+            <section class="case-section" aria-labelledby="outcome-title">
+              <h2 id="outcome-title" class="case-section__title">Outcome</h2>
+              <div class="prose stack stack--s">
+                <p>
+                  Placeholder results paragraph. Lead with measurable impact where
+                  you have it.
+                </p>
+              </div>
+
+              <!-- TODO: confirm real metrics, or remove this block -->
+              <dl class="metrics">
+                <div class="metric">
+                  <dt class="metric__label">Placeholder metric</dt>
+                  <dd class="metric__value">00%</dd>
+                </div>
+                <div class="metric">
+                  <dt class="metric__label">Placeholder metric</dt>
+                  <dd class="metric__value">00%</dd>
+                </div>
+                <div class="metric">
+                  <dt class="metric__label">Placeholder metric</dt>
+                  <dd class="metric__value">00%</dd>
+                </div>
+              </dl>
+            </section>
+
+            <!-- Reflection -->
+            <section class="case-section" aria-labelledby="reflection-title">
+              <h2 id="reflection-title" class="case-section__title">Reflection</h2>
+              <div class="prose stack stack--s">
+                <p>
+                  Placeholder closing thought: what you would do differently and what
+                  you carried into later work.
+                </p>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Metadata rail -->
+          <aside class="with-sidebar__aside case-meta" aria-label="Project details">
+            <dl class="case-meta__list">
+              <div class="case-meta__item">
+                <dt class="case-meta__label">Role</dt>
+                <dd class="case-meta__value">Placeholder role</dd>
+              </div>
+              <div class="case-meta__item">
+                <dt class="case-meta__label">Timeline</dt>
+                <dd class="case-meta__value">Placeholder dates</dd>
+              </div>
+              <div class="case-meta__item">
+                <dt class="case-meta__label">Team</dt>
+                <dd class="case-meta__value">Placeholder team</dd>
+              </div>
+              <div class="case-meta__item">
+                <dt class="case-meta__label">Tools</dt>
+                <dd class="case-meta__value">Figma, FigJam</dd>
+              </div>
+            </dl>
+            <!-- TODO: confirm role, timeline, team, and tools -->
+          </aside>
+
+        </div>
+      </div>
+
+      <!-- Next project -->
+      <nav class="section section--surface case-next" aria-label="Next project">
+        <div class="container">
+          <p class="section-header__eyebrow">Next project</p>
+          <p class="case-next__title">
+            <a class="link-arrow" href="/work/">Back to all work</a>
+            <!-- TODO: point this at the next case study once more exist -->
+          </p>
+        </div>
+      </nav>
+
+    </article>
+  </main>
+
+  <!-- Shared footer — keep in sync across all pages -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <p class="site-footer__tagline">Designing clear, humane software.</p>
+
+        <nav aria-label="Footer">
+          <p class="site-footer__heading">Site</p>
+          <ul class="site-footer__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/work/">Work</a></li>
+            <li><a href="/#about">About</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <p class="site-footer__heading">Elsewhere</p>
+          <ul class="site-footer__links">
+            <li><a href="mailto:hello@example.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="site-footer__meta">&copy; 2026 Dan. Built by hand.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

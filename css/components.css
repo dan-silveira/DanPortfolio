@@ -1,0 +1,436 @@
+/* ==========================================================================
+   Components: header, nav, footer, buttons, cards, tags
+   Each block is self-contained and styled only through tokens.
+   ========================================================================== */
+
+/* ---- Site header --------------------------------------------------------
+   Sticky so navigation stays reachable through long case studies. */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  background-color: var(--color-bg);
+  border-bottom: var(--border-width) solid transparent;
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+/* Border appears only once the page has scrolled, so the header separates
+   from content without drawing a line at rest. Toggled by js/main.js. */
+.site-header.is-scrolled {
+  border-bottom-color: var(--color-line);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  min-height: 4.5rem; /* TODO: confirm header height */
+}
+
+.site-header__logo {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  text-decoration: none;
+}
+
+.site-header__logo:hover {
+  color: var(--color-accent);
+}
+
+/* ---- Primary navigation -------------------------------------------------
+   Mobile: off-canvas panel toggled by the hamburger button.
+   Desktop (>=48rem): inline row, button hidden. */
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;  /* 44px minimum touch target */
+  height: 2.75rem;
+  margin-right: calc(var(--space-2xs) * -1);
+  border-radius: var(--radius-m);
+}
+
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  background-color: currentColor;
+  transition: transform var(--duration-fast) var(--ease-out),
+              opacity var(--duration-fast) var(--ease-out);
+}
+
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle__bars {
+  position: relative;
+}
+
+.nav-toggle__bars::before {
+  transform: translateY(-6px);
+}
+
+.nav-toggle__bars::after {
+  transform: translateY(6px);
+}
+
+/* Hamburger morphs into a close icon when the panel is open. */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before {
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after {
+  transform: rotate(-45deg);
+}
+
+.site-nav {
+  position: fixed;
+  inset: 4.5rem 0 auto;
+  z-index: var(--z-nav-panel);
+  background-color: var(--color-bg);
+  border-bottom: var(--border-width) solid var(--color-line);
+  padding: var(--space-s) var(--gutter) var(--space-l);
+  /* Hidden by default on mobile; .is-open reveals it. Uses visibility rather
+     than display so the slide transition can run. */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-0.5rem);
+  transition: opacity var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out),
+              visibility var(--duration-base);
+}
+
+.site-nav.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav__list li + li {
+  margin-top: 0;
+}
+
+.site-nav__link {
+  display: block;
+  padding-block: var(--space-2xs);
+  font-size: var(--step-1);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+}
+
+/* Current page indicator, set by js/main.js via aria-current. */
+.site-nav__link[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+@media (width >= 48rem) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    inset: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    gap: var(--space-m);
+    align-items: center;
+  }
+
+  .site-nav__link {
+    font-size: var(--step-0);
+    padding-block: 0;
+    position: relative;
+  }
+
+  /* Underline grows from the left on hover and stays for the current page. */
+  .site-nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.25rem;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .site-nav__link:hover::after,
+  .site-nav__link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Prevents background scrolling while the mobile nav panel is open. */
+body.has-nav-open {
+  overflow: hidden;
+}
+
+@media (width >= 48rem) {
+  body.has-nav-open {
+    overflow: visible;
+  }
+}
+
+/* ---- Site footer -------------------------------------------------------- */
+
+.site-footer {
+  background-color: var(--color-surface);
+  border-top: var(--border-width) solid var(--color-line);
+  padding-block: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.site-footer__tagline {
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer__links li + li {
+  margin-top: 0;
+}
+
+.site-footer__heading {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2xs);
+}
+
+.site-footer__meta {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  margin-top: var(--space-l);
+  padding-top: var(--space-s);
+  border-top: var(--border-width) solid var(--color-line);
+}
+
+/* ---- Buttons ------------------------------------------------------------
+   .button is the shared shape; modifiers set the color treatment. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  min-height: 2.75rem;
+  padding: var(--space-2xs) var(--space-m);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-full); /* TODO: confirm button shape */
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.button--primary:hover {
+  background-color: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.button--secondary {
+  border-color: var(--color-line);
+  color: var(--color-ink);
+}
+
+.button--secondary:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+/* Text-only action with a trailing arrow that nudges on hover. */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+}
+
+.link-arrow::after {
+  content: "\2192"; /* → */
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.link-arrow:hover::after {
+  transform: translateX(0.25rem);
+}
+
+/* ---- Tags --------------------------------------------------------------- */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tag-list li + li {
+  margin-top: 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.15em var(--space-2xs);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-full);
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  white-space: nowrap;
+}
+
+/* ---- Project card ------------------------------------------------------
+   Used in the work grid and in "more projects" rows. The whole card is
+   clickable: the anchor covers it via an absolutely positioned overlay, which
+   keeps a single focusable element and preserves text selection. */
+
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.project-card__media {
+  overflow: hidden;
+  border-radius: var(--radius-m);
+  background-color: var(--color-surface);
+}
+
+.project-card__media img {
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.project-card:hover .project-card__media img {
+  transform: scale(1.03);
+}
+
+.project-card__title {
+  font-size: var(--step-2);
+}
+
+.project-card__link {
+  text-decoration: none;
+}
+
+/* Expands the link's hit area to the full card. */
+.project-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.project-card__summary {
+  color: var(--color-ink-muted);
+  max-width: 42ch;
+}
+
+.project-card__meta {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+/* Featured variant: media and text side by side on wider screens. */
+@media (width >= 56rem) {
+  .project-card--featured {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+}
+
+/* ---- Scroll reveal -----------------------------------------------------
+   Elements marked data-reveal start offset and fade in when scrolled into
+   view. js/main.js adds .is-visible; if JavaScript never runs, the fallback
+   in main.js reveals everything so content is not hidden permanently. */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

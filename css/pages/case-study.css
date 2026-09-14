@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Page: Case study
+   ========================================================================== */
+
+/* ---- Hero --------------------------------------------------------------- */
+
+.case-hero {
+  padding-top: var(--space-l);
+}
+
+.case-hero__back {
+  margin-bottom: var(--space-l);
+}
+
+/* Back link with a leading arrow that nudges on hover. */
+.link-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+}
+
+.link-back::before {
+  content: "\2190"; /* ← */
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.link-back:hover::before {
+  transform: translateX(-0.25rem);
+}
+
+.case-hero__title {
+  max-width: 20ch;
+  font-size: var(--step-5);
+  margin-bottom: var(--space-m);
+}
+
+.case-hero__lede {
+  max-width: 54ch;
+  color: var(--color-ink-muted);
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+}
+
+.case-hero__media {
+  margin-top: var(--space-xl);
+}
+
+/* ---- Body sections ------------------------------------------------------ */
+
+.case-section__title {
+  font-size: var(--step-2);
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-m);
+  border-bottom: var(--border-width) solid var(--color-line);
+}
+
+/* Long-form reading column. Slightly narrower than the default measure
+   because case study prose is dense. */
+.prose {
+  max-width: 62ch;
+}
+
+.prose p {
+  max-width: none; /* the container sets the measure, not each paragraph */
+}
+
+.case-figure {
+  margin-top: var(--space-l);
+}
+
+/* ---- Outcome metrics ---------------------------------------------------- */
+
+.metrics {
+  display: grid;
+  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
+  margin: var(--space-l) 0 0;
+  padding: var(--space-m) 0 0;
+  border-top: var(--border-width) solid var(--color-line);
+}
+
+.metric__value {
+  display: block;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.metric__label {
+  order: 2; /* label reads beneath the number */
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+/* ---- Metadata rail ------------------------------------------------------ */
+
+.case-meta__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  margin: 0;
+  padding-top: var(--space-s);
+  border-top: var(--border-width) solid var(--color-line);
+}
+
+.case-meta__label {
+  color: var(--color-ink-muted);
+  font-size: var(--step--1);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.case-meta__value {
+  margin: var(--space-3xs) 0 0;
+}
+
+/* ---- Next project ------------------------------------------------------- */
+
+.case-next__title {
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  margin-top: var(--space-2xs);
+}

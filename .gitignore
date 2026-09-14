@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Figma / design working files (keep exports in assets/, not the sources)
+*.fig
+*.sketch
+
+# OS / misc
+Thumbs.db
