@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Page: simple index pages (Writing, Library)
+   Placeholder layouts until their Figma designs exist.
+   ========================================================================== */
+
+.page-intro {
+  padding-top: var(--space-l);
+}
+
+.page-intro__title {
+  margin-bottom: var(--space-2xs);
+}
+
+.page-intro__lede {
+  max-width: 52ch;
+}
+
+.page-empty {
+  margin-top: var(--space-xl);
+  padding: var(--space-xl) var(--space-l);
+  border: var(--border-width) dashed var(--color-line-strong);
+  border-radius: var(--radius-l);
+  text-align: center;
+}

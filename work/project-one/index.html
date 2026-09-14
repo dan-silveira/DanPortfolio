@@ -12,16 +12,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Project One — Dan</title>
+  <title>Project One — Dan Silveira</title>
   <meta name="description" content="Case study: Project One."><!-- TODO: confirm copy -->
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Project One — Dan">
+  <meta property="og:title" content="Project One — Dan Silveira">
   <meta property="og:description" content="Case study: Project One.">
-  <meta property="og:image" content="/assets/images/project-one-thumb.png">
+  <meta property="og:image" content="/assets/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/base.css">
@@ -43,20 +46,26 @@
   <!-- Shared header — keep in sync across all pages -->
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="site-header__logo" href="/">Dan</a>
+      <a class="site-header__logo" href="/">Dan Silveira</a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle__bars"></span>
-        <span class="visually-hidden">Menu</span>
-      </button>
+      <div class="site-nav-group">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bars"></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
 
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/work/">Work</a></li>
-          <li><a class="site-nav__link" href="/#about">About</a></li>
-          <li><a class="site-nav__link" href="/#contact">Contact</a></li>
-        </ul>
-      </nav>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a class="site-nav__link" href="/work/">Work</a></li>
+            <li><a class="site-nav__link" href="/writing/">Writing</a></li>
+            <li><a class="site-nav__link" href="/library/">Library</a></li>
+          </ul>
+        </nav>
+
+        <span class="site-header__avatar">
+          <img src="/assets/images/Avatar-SML.jpg" alt="" width="26" height="26">
+        </span>
+      </div>
     </div>
   </header>
 
@@ -81,7 +90,7 @@
       <!-- Hero image -->
       <div class="container case-hero__media">
         <div class="frame frame--wide">
-          <img src="/assets/images/project-one-hero.png" alt="" width="1600" height="900">
+          <!-- TODO: export not supplied; the frame holds its slot -->
           <!-- TODO: hero export + alt text -->
         </div>
       </div>
@@ -130,7 +139,7 @@
 
               <figure class="case-figure">
                 <div class="frame frame--photo">
-                  <img src="/assets/images/project-one-research.png" alt="" width="1200" height="900">
+                  <!-- TODO: export not supplied; the frame holds its slot -->
                   <!-- TODO: research artifact export + alt text -->
                 </div>
                 <figcaption>Placeholder caption describing what this artifact shows.</figcaption>
@@ -150,13 +159,13 @@
               <div class="grid--2 case-figure">
                 <figure>
                   <div class="frame frame--photo">
-                    <img src="/assets/images/project-one-process-1.png" alt="" width="1200" height="900">
+                    <!-- TODO: export not supplied; the frame holds its slot -->
                   </div>
                   <figcaption>Placeholder caption — early exploration.</figcaption>
                 </figure>
                 <figure>
                   <div class="frame frame--photo">
-                    <img src="/assets/images/project-one-process-2.png" alt="" width="1200" height="900">
+                    <!-- TODO: export not supplied; the frame holds its slot -->
                   </div>
                   <figcaption>Placeholder caption — refined direction.</figcaption>
                 </figure>
@@ -175,7 +184,7 @@
 
               <figure class="case-figure">
                 <div class="frame frame--wide">
-                  <img src="/assets/images/project-one-solution.png" alt="" width="1600" height="900">
+                  <!-- TODO: export not supplied; the frame holds its slot -->
                 </div>
                 <figcaption>Placeholder caption describing the final screens.</figcaption>
               </figure>
@@ -263,29 +272,13 @@
 
   <!-- Shared footer — keep in sync across all pages -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer__inner">
-        <p class="site-footer__tagline">Designing clear, humane software.</p>
-
-        <nav aria-label="Footer">
-          <p class="site-footer__heading">Site</p>
-          <ul class="site-footer__links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/work/">Work</a></li>
-            <li><a href="/#about">About</a></li>
-          </ul>
-        </nav>
-
-        <div>
-          <p class="site-footer__heading">Elsewhere</p>
-          <ul class="site-footer__links">
-            <li><a href="mailto:hello@example.com">Email</a></li>
-            <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="site-footer__meta">&copy; 2026 Dan. Built by hand.</p>
+    <div class="container site-footer__inner">
+      <ul class="site-footer__links">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/library/">Library</a></li>
+      </ul>
+      <p class="site-footer__meta">&copy; 2026 Dan Silveira</p>
     </div>
   </footer>
 

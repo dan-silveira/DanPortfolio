@@ -1,24 +1,23 @@
 /* ==========================================================================
    Page: Work index
+   No Figma design for this page yet; it borrows the homepage's type and
+   spacing so the two do not look like different sites.
    ========================================================================== */
 
 .work-intro {
-  padding-top: var(--space-xl);
+  padding-top: var(--space-l);
 }
 
 .work-intro__title {
-  font-size: var(--step-4);
+  margin-bottom: var(--space-2xs);
 }
 
 .work-intro__lede {
   max-width: 52ch;
-  color: var(--color-ink-muted);
-  font-size: var(--step-1);
-  line-height: var(--leading-snug);
 }
 
 /* Row gap is wider than the column gap so stacked cards read as separate
-   projects rather than a continuous block. */
+   projects rather than one continuous block. */
 .work-grid {
   row-gap: var(--space-2xl);
 }

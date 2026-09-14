@@ -1,67 +1,86 @@
 /* ==========================================================================
    Page: Home
+   Spacing below is derived from the Figma export's measured coordinates.
+   The comments record the source measurement so the intent survives edits.
    ========================================================================== */
 
-/* ---- Hero --------------------------------------------------------------- */
+/* ---- Hero ---------------------------------------------------------------
+   Portrait top sits at y=88 in the reference, 32px below the 56px header. */
 
-.hero__eyebrow {
-  color: var(--color-ink-muted);
-  font-size: var(--step-0);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  margin-bottom: var(--space-s);
+.hero {
+  padding-top: var(--space-l);
 }
 
-.hero__title {
-  max-width: 24ch; /* TODO: confirm hero measure against Figma line breaks */
-  margin-bottom: var(--space-m);
+.hero__figure {
+  width: var(--portrait-size);
+  max-width: 100%;
 }
 
-.hero__lede {
-  max-width: 52ch;
-  color: var(--color-ink-muted);
-  font-size: var(--step-1);
-  line-height: var(--leading-snug);
-}
-
-.hero__actions {
-  margin-top: var(--space-l);
-}
-
-/* ---- Selected work ------------------------------------------------------ */
-
-.home__work-link {
-  margin-top: var(--space-xl);
-}
-
-/* ---- About -------------------------------------------------------------- */
-
-.about__portrait {
-  /* Caps the portrait so it does not tower over the adjacent text column. */
-  max-width: 24rem;
-}
-
+/* The text column starts slightly below the portrait's top edge (name glyphs
+   begin at y=112 against a portrait top of y=88). */
 @media (width >= 48rem) {
-  .about__portrait {
-    margin-left: auto;
+  .hero__body {
+    padding-top: var(--space-s);
   }
 }
 
-/* ---- Contact ------------------------------------------------------------ */
-
-.contact__title {
-  font-size: var(--step-4);
+.hero__name {
+  margin-bottom: var(--space-3xs);
 }
 
-.contact__lede {
-  /* Overrides the default paragraph measure so the centered text stays centered. */
-  max-width: 44ch;
-  margin-inline: auto;
-  color: var(--color-ink-muted);
-  font-size: var(--step-1);
+.hero__role {
+  margin-bottom: var(--space-2xs);
 }
 
-.contact__actions {
-  justify-content: center;
+/* ---- How I see design ---------------------------------------------------
+   Section heading begins at y=366, 56px below the portrait's lower edge. */
+
+.lenses {
+  padding-top: var(--space-xl);
+}
+
+.lenses__title {
+  margin-bottom: var(--space-2xs);
+}
+
+/* 36px, which lands the first figure's top edge at y=449 as in the reference. */
+.lenses__intro {
+  margin-bottom: calc(var(--space-m) + var(--space-xs));
+}
+
+/* Rows repeat on a 254px pitch: a 222px figure plus a 32px gap. */
+.lenses__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Rail ---------------------------------------------------------------
+   Card group spacing. Work cards and writing cards use the same rhythm; the
+   heavier rule between the two groups comes from .rail__divider. */
+
+.rail__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.rail__more {
+  margin-bottom: var(--space-s);
+}
+
+/* ---- Below the shell breakpoint -----------------------------------------
+   The rail becomes a normal block beneath the main column. Constrain the
+   thumbnails so they do not stretch to full width and dwarf the text. */
+
+@media (width < 62rem) {
+  .rail__group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+    gap: var(--space-l);
+    align-items: start;
+  }
 }

@@ -1,90 +1,103 @@
 /* ==========================================================================
    Design tokens
-   Single source of truth for color, type, spacing, and radii.
-   Every value marked "TODO: confirm" is a placeholder awaiting the Figma spec.
+   Single source of truth for color, type, spacing, and geometry.
+
+   Values marked "ref" were read out of the Figma export's vector data
+   (assets/images/Homepage-REF.pdf) and are exact, not approximations.
    ========================================================================== */
 
 :root {
   /* ---- Color -------------------------------------------------------------
-     Neutrals run light to dark. --ink is body text, --ink-muted is secondary
-     text, --line is borders and dividers. */
-  --color-bg: #ffffff;          /* TODO: confirm page background */
-  --color-surface: #f6f6f4;     /* TODO: confirm raised/alt section background */
-  --color-line: #e4e4e0;        /* TODO: confirm border color */
-  --color-ink: #14140f;         /* TODO: confirm body text */
-  --color-ink-muted: #6b6b63;   /* TODO: confirm secondary text */
-  --color-accent: #3b2fe0;      /* TODO: confirm brand/link accent */
-  --color-accent-ink: #ffffff;  /* text placed on --color-accent */
+     The design uses four colors, nothing more. --line is the header and rail
+     divider; --line-strong is the heavier rule inside the rail. */
+  --color-bg: #f7f6f2;          /* ref */
+  --color-ink: #000000;         /* ref */
+  --color-line: #dedede;        /* ref */
+  --color-line-strong: #cdcdcd; /* ref */
 
-  /* Focus ring is intentionally high-contrast; keep it visible after restyle. */
-  --color-focus: var(--color-accent);
+  /* Derived, not in the reference: a neutral for image placeholders and for
+     secondary text on the inner pages. */
+  --color-surface: #e8e7e2;
+  --color-ink-muted: #5c5c57;
+
+  --color-focus: var(--color-ink);
 
   /* ---- Typography --------------------------------------------------------
-     Two families: display for headings, text for body. Swap the font stacks
-     once the real typefaces are self-hosted in assets/fonts. */
-  --font-display: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; /* TODO: confirm heading typeface */
-  --font-text: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;    /* TODO: confirm body typeface */
+     Two families. DM Serif Display is used only for H1; everything else is
+     DM Sans. Both are self-hosted in assets/fonts (see base.css). */
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-text: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-bold: 700; /* TODO: confirm available weights */
+  --weight-regular: 400;   /* DM Serif Display H1 */
+  --weight-medium: 500;    /* body */
+  --weight-semibold: 600;  /* H2, nav links */
+  --weight-bold: 700;      /* logo */
 
-  /* Fluid type scale. Each step interpolates between a mobile and a desktop
-     size, so text scales smoothly instead of jumping at breakpoints.
-     --step-0 is body copy; negative steps are smaller, positive larger. */
-  --step--1: clamp(0.833rem, 0.81rem + 0.11vw, 0.889rem);
-  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
-  --step-1: clamp(1.2rem, 1.13rem + 0.35vw, 1.424rem);
-  --step-2: clamp(1.44rem, 1.32rem + 0.58vw, 1.802rem);
-  --step-3: clamp(1.728rem, 1.55rem + 0.9vw, 2.281rem);
-  --step-4: clamp(2.074rem, 1.8rem + 1.37vw, 2.887rem);
-  --step-5: clamp(2.488rem, 2.08rem + 2.04vw, 3.653rem);
+  /* Fixed scale. The reference contains exactly four sizes; steps 4 and 5
+     exist only for the case study pages, which have no Figma reference yet. */
+  --step--1: 0.75rem;   /* 12px  meta */
+  --step-0: 0.875rem;   /* 14px  body            ref */
+  --step-1: 1rem;       /* 16px  nav links       ref */
+  --step-2: 1.25rem;    /* 20px  H2, logo        ref */
+  --step-3: 1.5rem;     /* 24px  H1 (serif)      ref */
+  --step-4: 2rem;       /* 32px  inner pages */
+  --step-5: 2.5rem;     /* 40px  inner pages */
 
+  /* Body copy is 14px on an 18px line box in the reference. */
+  --leading-body: 1.2857;
   --leading-tight: 1.1;
-  --leading-snug: 1.3;
+  --leading-snug: 1.2;
   --leading-normal: 1.6;
 
-  --tracking-tight: -0.02em;
+  --tracking-tight: -0.01em;
   --tracking-normal: 0;
-  --tracking-wide: 0.08em;
+  --tracking-wide: 0.06em;
 
-  /* Caps the width of running text for readability. */
   --measure: 68ch;
 
   /* ---- Spacing -----------------------------------------------------------
-     Fluid scale on the same principle as type. Use these instead of raw rem
-     values so vertical rhythm stays consistent across pages. */
-  --space-3xs: clamp(0.25rem, 0.24rem + 0.05vw, 0.28rem);
-  --space-2xs: clamp(0.5rem, 0.48rem + 0.1vw, 0.56rem);
-  --space-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.84rem);
-  --space-s: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
-  --space-m: clamp(1.5rem, 1.44rem + 0.3vw, 1.688rem);
-  --space-l: clamp(2rem, 1.92rem + 0.4vw, 2.25rem);
-  --space-xl: clamp(3rem, 2.8rem + 1vw, 3.75rem);
-  --space-2xl: clamp(4rem, 3.6rem + 2vw, 5.5rem);
-  --space-3xl: clamp(6rem, 5.2rem + 4vw, 9rem);
+     Fixed 4px-based scale. The design lands on 8 / 16 / 24 / 32 / 56. */
+  --space-3xs: 0.25rem;  /* 4  */
+  --space-2xs: 0.5rem;   /* 8  */
+  --space-xs: 0.75rem;   /* 12 */
+  --space-s: 1rem;       /* 16 */
+  --space-m: 1.5rem;     /* 24 */
+  --space-l: 2rem;       /* 32 */
+  --space-xl: 3rem;      /* 48 */
+  --space-2xl: 3.5rem;   /* 56 */
+  --space-3xl: 5rem;     /* 80 */
 
-  /* ---- Layout ------------------------------------------------------------ */
-  --container: 75rem;        /* TODO: confirm max content width from Figma */
-  --container-narrow: 45rem; /* long-form case study prose */
-  --gutter: var(--space-m);  /* horizontal page padding */
+  /* ---- Layout ------------------------------------------------------------
+     The page is a 1280 frame with 32 gutters. Inside that, a 914 main column
+     and a 302 rail sit either side of a 1px divider. */
+  --container: 80rem;          /* 1280 ref */
+  --gutter: 2rem;              /* 32   ref */
+  --header-height: 3.5rem;     /* 56   ref */
+  --rail-width: 18.875rem;     /* 302  ref */
+  --rail-content: 14.875rem;   /* 238  ref */
+  --main-width: 57.125rem;     /* 914  ref */
+  --container-narrow: 45rem;   /* long-form prose on inner pages */
 
-  /* ---- Borders and elevation -------------------------------------------- */
-  --radius-s: 0.25rem;  /* TODO: confirm corner radii */
-  --radius-m: 0.5rem;
-  --radius-l: 1rem;
+  /* ---- Component geometry ------------------------------------------------ */
+  --portrait-size: 13.875rem;  /* 222      ref */
+  --figure-width: 27.5rem;     /* 440      ref */
+  --figure-height: 13.875rem;  /* 222      ref */
+  --thumb-width: 14.875rem;    /* 238      ref */
+  --thumb-height: 6.75rem;     /* 108      ref, confirmed by the exports */
+  --avatar-size: 1.625rem;     /* 26       ref */
+
+  /* ---- Borders ----------------------------------------------------------- */
+  --radius-s: 0.25rem;   /* 4  */
+  --radius-m: 0.5rem;    /* 8  */
+  --radius-l: 1rem;      /* 16, the portrait and figure corner ref */
   --radius-full: 999rem;
 
   --border-width: 1px;
 
-  --shadow-s: 0 1px 2px rgb(0 0 0 / 6%);           /* TODO: confirm shadows */
-  --shadow-m: 0 4px 16px rgb(0 0 0 / 8%);
-  --shadow-l: 0 12px 32px rgb(0 0 0 / 10%);
-
   /* ---- Motion ------------------------------------------------------------
-     Durations are referenced by components; base.css zeroes them out under
-     prefers-reduced-motion so animation is disabled in one place. */
+     base.css zeroes these under prefers-reduced-motion, so components do not
+     each need their own media query. */
   --duration-fast: 120ms;
   --duration-base: 240ms;
   --duration-slow: 480ms;

@@ -1,11 +1,10 @@
 /* ==========================================================================
-   Layout: containers, grids, and vertical rhythm
-   Reusable structural primitives. Page-specific composition lives in css/pages.
+   Layout: shell, containers, grids, vertical rhythm
+   Structural primitives only. Page-specific composition lives in css/pages.
    ========================================================================== */
 
 /* ---- Page shell ---------------------------------------------------------
-   Sticky footer: main grows to fill the viewport so short pages do not leave
-   the footer floating mid-screen. */
+   Sticky footer: main grows so short pages do not leave the footer floating. */
 
 body {
   display: flex;
@@ -17,8 +16,7 @@ body {
 }
 
 /* ---- Container ----------------------------------------------------------
-   Centers content and supplies the page gutter. Every full-width section
-   should wrap its content in one of these rather than setting its own padding. */
+   Centers content at the 1280 frame width and supplies the 32px gutter. */
 
 .container {
   width: 100%;
@@ -31,45 +29,112 @@ body {
   max-width: var(--container-narrow);
 }
 
-/* ---- Section rhythm -----------------------------------------------------
-   Sections own their vertical spacing so pages do not need margin overrides. */
+/* ---- Two-column shell ---------------------------------------------------
+   The homepage splits into a main column and a 302px rail separated by a 1px
+   divider. The divider is a border on the rail rather than a separate
+   element, so it cannot fall out of sync with the column edge.
+
+   The rail runs to the frame's right edge rather than stopping at the
+   container's gutter, which is why .container--shell drops its right padding
+   and the rail supplies its own instead. Laid out left to right, the 1280
+   frame is: 32 gutter, 914 main, 32 gap, 1 divider, 32, 238 rail, 32.
+
+   Below the breakpoint the rail drops beneath the main content and the
+   divider flips to the top edge. */
+
+.shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.shell__rail {
+  border-top: var(--border-width) solid var(--color-line);
+  padding-top: var(--space-l);
+}
+
+@media (width >= 62rem) {
+  .container--shell {
+    padding-right: 0;
+  }
+
+  .shell {
+    grid-template-columns: minmax(0, 1fr) var(--rail-width);
+    gap: 0;
+    align-items: start;
+  }
+
+  /* Padding on both sides of the rail reproduces the reference's 238px
+     content width inside the 302px track. */
+  .shell__rail {
+    border-top: 0;
+    border-left: var(--border-width) solid var(--color-line);
+    padding: var(--space-l) var(--gutter);
+    /* Full-height divider: the border must run past the rail's own content,
+       so the column stretches to the grid row height. */
+    align-self: stretch;
+    min-height: 100%;
+  }
+
+  /* Inset from the divider, bringing the main content to its 914px width. */
+  .shell__main {
+    padding-right: var(--gutter);
+  }
+}
+
+/* ---- Sidebar ------------------------------------------------------------
+   Content plus a narrow rail, used by the case study metadata column. Stacks
+   on narrow screens. Distinct from .shell, which is the homepage's
+   full-height two-column frame. */
+
+.with-sidebar {
+  display: grid;
+  gap: var(--space-l);
+  grid-template-columns: 1fr;
+}
+
+@media (width >= 56rem) {
+  .with-sidebar {
+    grid-template-columns: minmax(0, 1fr) 16rem;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .with-sidebar__aside {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-l));
+  }
+}
+
+/* ---- Section rhythm ----------------------------------------------------- */
 
 .section {
   padding-block: var(--space-2xl);
 }
 
-.section--tight {
-  padding-block: var(--space-xl);
-}
-
-.section--loose {
-  padding-block: var(--space-3xl);
-}
-
-/* Alternate background band. Pairs with .section for full-bleed color. */
-.section--surface {
-  background-color: var(--color-surface);
-}
-
-/* Section heading block: eyebrow label plus title. */
-.section-header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-  margin-bottom: var(--space-l);
-}
-
+/* Small uppercase label above a heading. */
 .section-header__eyebrow {
   color: var(--color-ink-muted);
   font-size: var(--step--1);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
 }
 
+.section--tight {
+  padding-block: var(--space-l);
+}
+
+.section--flush {
+  padding-block: 0;
+}
+
+.section--surface {
+  background-color: var(--color-surface);
+}
+
 /* ---- Stack --------------------------------------------------------------
-   Vertical flow with a single consistent gap. The default covers most prose;
-   the modifiers handle denser or airier groupings. */
+   Vertical flow with one consistent gap. */
 
 .stack {
   display: flex;
@@ -77,6 +142,7 @@ body {
   gap: var(--space-m);
 }
 
+.stack--3xs { gap: var(--space-3xs); }
 .stack--2xs { gap: var(--space-2xs); }
 .stack--xs { gap: var(--space-xs); }
 .stack--s { gap: var(--space-s); }
@@ -95,20 +161,19 @@ body {
 
 .cluster--between {
   justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: var(--space-s);
 }
 
 /* ---- Auto grid ----------------------------------------------------------
-   Responsive columns with no media queries: items grow until they hit the
-   minimum width, then wrap. --grid-min sets that threshold per instance. */
+   Responsive columns with no media query: items grow until they hit
+   --grid-min, then wrap. */
 
 .grid {
   display: grid;
   gap: var(--space-l);
   grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min, 20rem), 100%), 1fr));
 }
-
-/* Fixed column counts for layouts that must not reflow arbitrarily.
-   Both collapse to a single column on narrow screens. */
 
 .grid--2,
 .grid--3 {
@@ -127,45 +192,53 @@ body {
   }
 }
 
-/* ---- Sidebar ------------------------------------------------------------
-   Content plus a narrow rail (case study metadata). Stacks on narrow screens. */
+/* ---- Media split --------------------------------------------------------
+   A fixed-width figure beside a flexible text column, used by the hero and
+   the four lens rows. The figure width is a token so the two stay locked to
+   the same 440px measurement from the reference.
 
-.with-sidebar {
+   .media-split--reverse puts the figure on the right by reordering the grid
+   rather than the markup, so the heading still precedes its figure in the
+   DOM and the reading order stays correct. */
+
+.media-split {
   display: grid;
-  gap: var(--space-l);
   grid-template-columns: 1fr;
+  gap: var(--space-m);
+  align-items: start;
 }
 
-@media (width >= 56rem) {
-  .with-sidebar {
-    grid-template-columns: minmax(0, 1fr) 16rem;
-    gap: var(--space-xl);
-    align-items: start;
+@media (width >= 48rem) {
+  .media-split {
+    grid-template-columns: var(--split-figure, var(--figure-width)) minmax(0, 1fr);
+    gap: var(--space-m);
   }
 
-  .with-sidebar__aside {
-    position: sticky;
-    top: var(--space-xl);
+  .media-split--reverse {
+    grid-template-columns: minmax(0, 1fr) var(--split-figure, var(--figure-width));
+  }
+
+  .media-split--reverse > .media-split__figure {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .media-split--reverse > .media-split__body {
+    grid-column: 1;
+    grid-row: 1;
   }
 }
 
-/* ---- Full-bleed ---------------------------------------------------------
-   Escapes the container to span the viewport, for wide case study imagery. */
-
-.full-bleed {
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-}
-
-/* ---- Aspect ratio boxes -------------------------------------------------
-   Reserve image space before assets load so the page does not shift.
-   Adjust ratios once real export dimensions are confirmed. */
+/* ---- Frames -------------------------------------------------------------
+   Fixed aspect boxes that reserve image space before the asset loads, so the
+   page never shifts. The grey fill doubles as the placeholder for assets
+   that have not been supplied yet. */
 
 .frame {
   position: relative;
   overflow: hidden;
   background-color: var(--color-surface);
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-l);
 }
 
 .frame > img,
@@ -175,10 +248,23 @@ body {
   object-fit: cover;
 }
 
+.frame--figure {
+  aspect-ratio: 440 / 222;
+}
+
+.frame--portrait {
+  aspect-ratio: 1;
+  max-width: var(--portrait-size);
+}
+
+.frame--thumb {
+  aspect-ratio: 238 / 108;
+  border-radius: var(--radius-s);
+}
+
 .frame--wide { aspect-ratio: 16 / 9; }
 .frame--photo { aspect-ratio: 4 / 3; }
 .frame--square { aspect-ratio: 1; }
-.frame--portrait { aspect-ratio: 3 / 4; }
 
 /* ---- Utilities ---------------------------------------------------------- */
 
@@ -192,8 +278,4 @@ body {
 
 .text-muted {
   color: var(--color-ink-muted);
-}
-
-.text-balance {
-  text-wrap: balance;
 }

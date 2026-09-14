@@ -4,16 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dan — UX Designer</title>
-  <meta name="description" content="Portfolio of Dan, a UX designer focused on research-led product design."><!-- TODO: confirm copy -->
+  <title>Dan Silveira — Senior Product Design Consultant</title>
+  <meta name="description" content="Dan Silveira, MDes. Senior Product Design Consultant at IBM, writer and professor. Strategic foresight, system thinking, human-centered design, and business design.">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Dan — UX Designer">
-  <meta property="og:description" content="Portfolio of Dan, a UX designer focused on research-led product design.">
-  <meta property="og:image" content="/assets/images/og-image.png"><!-- TODO: 1200x630 export -->
+  <meta property="og:title" content="Dan Silveira — Senior Product Design Consultant">
+  <meta property="og:description" content="Senior Product Design Consultant at IBM, writer and professor.">
+  <meta property="og:image" content="/assets/images/og-image.png"><!-- TODO: confirm 1200x630 export -->
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml"><!-- TODO: favicon -->
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml"><!-- TODO: confirm favicon -->
+
+  <!-- The body typeface is needed for first paint; preloading it avoids a
+       visible swap on the hero. -->
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/base.css">
@@ -35,157 +40,281 @@
   <!-- Shared header — keep in sync across all pages -->
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="site-header__logo" href="/">Dan</a><!-- TODO: confirm logo mark or wordmark -->
+      <a class="site-header__logo" href="/">Dan Silveira</a>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span class="nav-toggle__bars"></span>
-        <span class="visually-hidden">Menu</span>
-      </button>
+      <div class="site-nav-group">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bars"></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
 
-      <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="/work/">Work</a></li>
-          <li><a class="site-nav__link" href="#about">About</a></li>
-          <li><a class="site-nav__link" href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a class="site-nav__link" href="/work/">Work</a></li>
+            <li><a class="site-nav__link" href="/writing/">Writing</a></li>
+            <li><a class="site-nav__link" href="/library/">Library</a></li>
+          </ul>
+        </nav>
+
+        <span class="site-header__avatar">
+          <img src="/assets/images/Avatar-SML.jpg" alt="" width="26" height="26">
+        </span>
+      </div>
     </div>
   </header>
 
   <main class="site-main" id="main">
+    <div class="container container--shell shell">
 
-    <!-- Hero -->
-    <section class="section--loose hero">
-      <div class="container">
-        <p class="hero__eyebrow">UX Designer</p><!-- TODO: confirm role line -->
-        <h1 class="hero__title">
-          Placeholder headline stating what you do and who you do it for.
-        </h1>
-        <p class="hero__lede">
-          Placeholder supporting sentence with a little more detail about your
-          practice, the kinds of problems you take on, and the outcomes you drive.
-        </p>
-        <div class="cluster hero__actions">
-          <a class="button button--primary" href="/work/">View work</a>
-          <a class="button button--secondary" href="#contact">Get in touch</a>
-        </div>
+      <!-- ============================ MAIN COLUMN ======================== -->
+      <div class="shell__main">
+
+        <!-- Hero -->
+        <section class="hero media-split" style="--split-figure: var(--portrait-size);">
+          <div class="hero__figure frame frame--portrait">
+            <!-- Portrait not supplied yet; the frame holds its 222x222 slot so
+                 dropping the export in later will not shift the layout. -->
+          </div>
+
+          <div class="hero__body media-split__body">
+            <h1 class="display hero__name">Dan Silveira, MDes</h1>
+            <p class="heading hero__role">Senior Product Design Consultant @ IBM | Writer &amp; Professor</p>
+            <p>
+              What is good design? This is a question I often return to because what
+              surrounds design interests me as much as design itself. Good design
+              arrives at the intersection of a designer's creativity, their fluency
+              with methods that reveal the user's point of view, and their instinct
+              for strategy. It's what lets a designer reconcile what the business
+              wants with what the user needs and what the system allows into one
+              solution that serves all three.
+            </p>
+          </div>
+        </section>
+
+        <!-- How I see design -->
+        <section class="lenses" aria-labelledby="lenses-title">
+          <h2 class="display lenses__title" id="lenses-title">How I see design</h2>
+          <p class="lenses__intro">These four lenses shape my approach to design as a discipline.</p>
+
+          <ul class="lenses__list">
+
+            <li class="lens media-split" data-reveal>
+              <div class="media-split__figure frame frame--figure">
+                <img src="/assets/images/StrategicForesight-IMG-SML.jpg"
+                     alt="Abstract illustration of a widening cone of possible futures"
+                     width="440" height="222" loading="lazy" decoding="async">
+              </div>
+              <div class="media-split__body">
+                <h3 class="heading lens__title">Strategic Foresight</h3>
+                <div class="lens__body">
+                  <p>
+                    Strategic foresight isn't prediction. It's asking what the thing we
+                    build today will need to become once the world around it has moved.
+                  </p>
+                  <p>
+                    Products shift. Environments shift. Even personas expire. Methods
+                    that model and monitor those shifts give a team something to design
+                    toward, rather than a present to optimize for, or a competitor to
+                    match.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="lens media-split media-split--reverse" data-reveal>
+              <div class="media-split__figure frame frame--figure">
+                <img src="/assets/images/SystemThinking-IMG-SML.jpg"
+                     alt="Abstract illustration of interconnected nodes linked by arrows"
+                     width="440" height="222" loading="lazy" decoding="async">
+              </div>
+              <div class="media-split__body">
+                <h3 class="heading lens__title">System Thinking</h3>
+                <div class="lens__body">
+                  <p>
+                    Every product we design is a moment within a larger tapestry of
+                    experiences and user decisions.
+                  </p>
+                  <p>
+                    By mapping these systems as both networks of interconnected nodes
+                    and as layered structures of front-stage, back-stage, and supporting
+                    services, we can understand how a design choice ripples across the
+                    wider experience, and design with the whole picture in view.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="lens media-split" data-reveal>
+              <div class="media-split__figure frame frame--figure">
+                <img src="/assets/images/BusinessDesign-IMG-SML.jpg"
+                     alt="Abstract illustration of concentric rings orbiting a central mass"
+                     width="440" height="222" loading="lazy" decoding="async">
+              </div>
+              <div class="media-split__body">
+                <h3 class="heading lens__title">Business Design</h3>
+                <div class="lens__body">
+                  <p>
+                    Business design is the orchestration of business goals, user needs,
+                    and development realities into a strategy that's valuable, feasible,
+                    and viable.
+                  </p>
+                  <p>
+                    When done well, it is what separates a product that ships and
+                    performs from one that simply gets built and exists. It's the
+                    difference that will lead to growth and recognition.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+            <li class="lens media-split media-split--reverse" data-reveal>
+              <div class="media-split__figure frame frame--figure">
+                <img src="/assets/images/HumanCenteredDesign-IMG-SML.jpg"
+                     alt="Abstract illustration of figures arranged in a ring around a radiating centre"
+                     width="440" height="222" loading="lazy" decoding="async">
+              </div>
+              <div class="media-split__body">
+                <h3 class="heading lens__title">Human-Centered Design</h3>
+                <div class="lens__body">
+                  <p>
+                    Human-centered design is not a mantra; it's an approach to realize
+                    the potential of a product by building experiences that go beyond
+                    what users could envision for themselves.
+                  </p>
+                  <p>
+                    Through dedicated research and stakeholder collaboration, we are
+                    able to develop a shared understanding that transitions ideas into
+                    practice.
+                  </p>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </section>
+
       </div>
-    </section>
 
-    <!-- Selected work -->
-    <section class="section" aria-labelledby="selected-work-title">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-header__eyebrow">Selected work</p>
-          <h2 id="selected-work-title">Case studies</h2>
-        </div>
+      <!-- ================================ RAIL =========================== -->
+      <aside class="shell__rail" aria-labelledby="recent-title">
+        <div class="rail__inner">
+          <h2 class="display rail__heading" id="recent-title">Recent</h2>
 
-        <div class="stack stack--xl">
+          <!-- Recent work -->
+          <a class="rail__more" href="/work/">See all work</a>
 
-          <article class="project-card project-card--featured" data-reveal>
-            <div class="project-card__media frame frame--wide">
-              <img src="/assets/images/project-one-thumb.png" alt="" width="1200" height="675">
-              <!-- TODO: thumbnail export + alt text -->
-            </div>
-            <div class="stack stack--s">
-              <p class="project-card__meta">2026 &middot; Product design</p>
-              <h3 class="project-card__title">
-                <a class="project-card__link" href="/work/project-one/">Project One</a>
+          <div class="rail__group">
+
+            <article class="rail-card">
+              <h3 class="rail-card__title">
+                <a class="rail-card__link" href="/work/">Design Leadership</a>
+                <!-- TODO: confirm destination -->
               </h3>
-              <p class="project-card__summary">
-                One or two sentences framing the problem and the result, written to
-                make someone want to open the case study.
+              <div class="rail-card__media frame frame--thumb">
+                <img src="/assets/images/AirCanada-IMG.png"
+                     alt="Screenshot of the Air Canada reporting interface"
+                     width="238" height="108" loading="lazy" decoding="async">
+              </div>
+              <p class="rail-card__summary">
+                Learn about the work I did at Air Canada as an IBM Product Design
+                Consultant.
               </p>
-              <ul class="tag-list">
-                <li><span class="tag">User research</span></li>
-                <li><span class="tag">Design system</span></li>
-                <li><span class="tag">Prototyping</span></li>
-              </ul>
-            </div>
-          </article>
+            </article>
 
-        </div>
+            <article class="rail-card">
+              <h3 class="rail-card__title">
+                <a class="rail-card__link" href="/work/">Cash Management System</a>
+                <!-- TODO: confirm destination -->
+              </h3>
+              <div class="rail-card__media frame frame--thumb">
+                <img src="/assets/images/CashManagement-IMG.png"
+                     alt="Screenshot of a cash management dashboard with charts"
+                     width="238" height="108" loading="lazy" decoding="async">
+              </div>
+              <p class="rail-card__summary">
+                Learn about the work I did at Air Canada as an IBM Product Design
+                Consultant.
+              </p>
+            </article>
 
-        <p class="home__work-link">
-          <a class="link-arrow" href="/work/">See all work</a>
-        </p>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="section section--surface" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <div class="grid--2">
-          <div class="stack">
-            <div class="section-header">
-              <p class="section-header__eyebrow">About</p>
-              <h2 id="about-title">A short introduction</h2>
-            </div>
-            <p>
-              Placeholder biography paragraph. Two or three sentences on your
-              background, how you approach design problems, and what you are
-              looking for next.
-            </p>
-            <p>
-              Placeholder second paragraph covering tools, collaboration style,
-              or relevant domain experience.
-            </p>
           </div>
 
-          <div class="frame frame--portrait about__portrait">
-            <img src="/assets/images/portrait.png" alt="" width="900" height="1200">
-            <!-- TODO: portrait export + alt text -->
+          <hr class="rail__divider">
+
+          <!-- Recent writing -->
+          <a class="rail__more" href="/writing/">See all articles</a>
+
+          <div class="rail__group">
+
+            <article class="rail-card">
+              <h3 class="rail-card__title">
+                <a class="rail-card__link" href="/writing/">Trends Report 2026</a>
+                <!-- TODO: confirm destination -->
+              </h3>
+              <div class="rail-card__media frame frame--thumb">
+                <img src="/assets/images/TrendsReport-SML.jpg"
+                     alt="Printed trends report open on a dark surface"
+                     width="238" height="108" loading="lazy" decoding="async">
+              </div>
+              <p class="rail-card__summary">
+                Read the latest trends report I researched and wrote using strategic
+                foresight methods and frameworks.
+              </p>
+            </article>
+
+            <article class="rail-card">
+              <h3 class="rail-card__title">
+                <a class="rail-card__link" href="/writing/">The Design-Knowledge Framework</a>
+                <!-- TODO: confirm destination -->
+              </h3>
+              <div class="rail-card__media frame frame--thumb">
+                <img src="/assets/images/TheDesign-Knowledge-SML.jpg"
+                     alt="White jigsaw puzzle with one piece missing"
+                     width="238" height="108" loading="lazy" decoding="async">
+              </div>
+              <p class="rail-card__summary">
+                An investigation of the limits of AI generation in Design and the
+                effects of prompt priming. This article explores the different thinking
+                processes of AI and Design, and how, by using a design-knowledge
+                framework, we can guide AI into creating more human-centred designs.
+              </p>
+            </article>
+
+            <article class="rail-card">
+              <h3 class="rail-card__title">
+                <a class="rail-card__link" href="/writing/">The Fog of Now</a>
+                <!-- TODO: confirm destination -->
+              </h3>
+              <div class="rail-card__media frame frame--thumb">
+                <img src="/assets/images/TheFogofNow-IMG.png"
+                     alt="Fog obscuring the horizon over open water"
+                     width="238" height="108" loading="lazy" decoding="async">
+              </div>
+              <p class="rail-card__summary">
+                Explore how organizations become so fixated on present-day customer
+                needs and agile sprint cycles that they lose sight of emerging futures.
+                This article argues for layering strategic foresight methodologies onto
+                agile practices, enabling teams to develop future-oriented visions
+                guided by emerging trends rather than optimizing solely for the present.
+              </p>
+            </article>
+
           </div>
         </div>
-      </div>
-    </section>
+      </aside>
 
-    <!-- Contact -->
-    <section class="section section--loose contact" id="contact" aria-labelledby="contact-title">
-      <div class="container text-center stack stack--l">
-        <div class="stack stack--s">
-          <h2 id="contact-title" class="contact__title">Let's work together</h2>
-          <p class="contact__lede">
-            Placeholder line inviting people to reach out about roles or projects.
-          </p>
-        </div>
-        <div class="cluster contact__actions">
-          <a class="button button--primary" href="mailto:hello@example.com">Email me</a>
-          <!-- TODO: confirm email address -->
-          <a class="button button--secondary" href="https://www.linkedin.com/" rel="noopener">LinkedIn</a>
-          <!-- TODO: confirm profile URL -->
-        </div>
-      </div>
-    </section>
-
+    </div>
   </main>
 
   <!-- Shared footer — keep in sync across all pages -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer__inner">
-        <p class="site-footer__tagline">Designing clear, humane software.</p>
-        <!-- TODO: confirm footer tagline -->
-
-        <nav aria-label="Footer">
-          <p class="site-footer__heading">Site</p>
-          <ul class="site-footer__links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/work/">Work</a></li>
-            <li><a href="/#about">About</a></li>
-          </ul>
-        </nav>
-
-        <div>
-          <p class="site-footer__heading">Elsewhere</p>
-          <ul class="site-footer__links">
-            <li><a href="mailto:hello@example.com">Email</a></li>
-            <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="site-footer__meta">&copy; 2026 Dan. Built by hand.</p>
+    <div class="container site-footer__inner">
+      <ul class="site-footer__links">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/library/">Library</a></li>
+      </ul>
+      <p class="site-footer__meta">&copy; 2026 Dan Silveira</p>
     </div>
   </footer>
 

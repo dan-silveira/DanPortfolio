@@ -1,24 +1,18 @@
 /* ==========================================================================
-   Components: header, nav, footer, buttons, cards, tags
+   Components: header, nav, rail, cards, buttons, footer
    Each block is self-contained and styled only through tokens.
    ========================================================================== */
 
 /* ---- Site header --------------------------------------------------------
-   Sticky so navigation stays reachable through long case studies. */
+   56px tall with a 1px bottom divider, sticky so navigation stays reachable
+   through long pages. */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
   background-color: var(--color-bg);
-  border-bottom: var(--border-width) solid transparent;
-  transition: border-color var(--duration-base) var(--ease-out);
-}
-
-/* Border appears only once the page has scrolled, so the header separates
-   from content without drawing a line at rest. Toggled by js/main.js. */
-.site-header.is-scrolled {
-  border-bottom-color: var(--color-line);
+  border-bottom: var(--border-width) solid var(--color-line);
 }
 
 .site-header__inner {
@@ -26,24 +20,27 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-m);
-  min-height: 4.5rem; /* TODO: confirm header height */
+  /* The divider is part of the 56px total, so the inner row is one pixel
+     shorter. This keeps page content starting at y=88 as in the reference. */
+  height: calc(var(--header-height) - var(--border-width));
 }
 
 .site-header__logo {
-  font-family: var(--font-display);
-  font-size: var(--step-1);
+  font-size: var(--step-2);
   font-weight: var(--weight-bold);
-  letter-spacing: var(--tracking-tight);
-  text-decoration: none;
-}
-
-.site-header__logo:hover {
-  color: var(--color-accent);
+  line-height: 1;
+  white-space: nowrap;
 }
 
 /* ---- Primary navigation -------------------------------------------------
-   Mobile: off-canvas panel toggled by the hamburger button.
+   Mobile: off-canvas panel toggled by the hamburger.
    Desktop (>=48rem): inline row, button hidden. */
+
+.site-nav-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+}
 
 .nav-toggle {
   display: inline-flex;
@@ -53,6 +50,10 @@
   height: 2.75rem;
   margin-right: calc(var(--space-2xs) * -1);
   border-radius: var(--radius-m);
+}
+
+.nav-toggle__bars {
+  position: relative;
 }
 
 .nav-toggle__bars,
@@ -72,17 +73,8 @@
   position: absolute;
 }
 
-.nav-toggle__bars {
-  position: relative;
-}
-
-.nav-toggle__bars::before {
-  transform: translateY(-6px);
-}
-
-.nav-toggle__bars::after {
-  transform: translateY(6px);
-}
+.nav-toggle__bars::before { transform: translateY(-6px); }
+.nav-toggle__bars::after { transform: translateY(6px); }
 
 /* Hamburger morphs into a close icon when the panel is open. */
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars {
@@ -99,13 +91,13 @@
 
 .site-nav {
   position: fixed;
-  inset: 4.5rem 0 auto;
+  inset: var(--header-height) 0 auto;
   z-index: var(--z-nav-panel);
   background-color: var(--color-bg);
   border-bottom: var(--border-width) solid var(--color-line);
   padding: var(--space-s) var(--gutter) var(--space-l);
-  /* Hidden by default on mobile; .is-open reveals it. Uses visibility rather
-     than display so the slide transition can run. */
+  /* Hidden by default on mobile. Uses visibility rather than display so the
+     transition can run. */
   visibility: hidden;
   opacity: 0;
   transform: translateY(-0.5rem);
@@ -129,21 +121,32 @@
   padding: 0;
 }
 
-.site-nav__list li + li {
-  margin-top: 0;
-}
-
 .site-nav__link {
   display: block;
   padding-block: var(--space-2xs);
-  font-size: var(--step-1);
-  font-weight: var(--weight-medium);
-  text-decoration: none;
+  font-size: var(--step-2);
+  font-weight: var(--weight-semibold);
 }
 
-/* Current page indicator, set by js/main.js via aria-current. */
 .site-nav__link[aria-current="page"] {
-  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Avatar sits outside the collapsible panel so it stays visible at all
+   widths, matching the reference. */
+.site-header__avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  flex: 0 0 auto;
+}
+
+.site-header__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (width >= 48rem) {
@@ -169,28 +172,8 @@
   }
 
   .site-nav__link {
-    font-size: var(--step-0);
+    font-size: var(--step-1);
     padding-block: 0;
-    position: relative;
-  }
-
-  /* Underline grows from the left on hover and stays for the current page. */
-  .site-nav__link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -0.25rem;
-    width: 100%;
-    height: 1px;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--duration-fast) var(--ease-out);
-  }
-
-  .site-nav__link:hover::after,
-  .site-nav__link[aria-current="page"]::after {
-    transform: scaleX(1);
   }
 }
 
@@ -205,64 +188,91 @@ body.has-nav-open {
   }
 }
 
-/* ---- Site footer -------------------------------------------------------- */
+/* ---- Rail ---------------------------------------------------------------
+   The "Recent" sidebar. Sticky on desktop so it stays in view while the main
+   column scrolls; static below the shell breakpoint where it sits inline. */
 
-.site-footer {
-  background-color: var(--color-surface);
-  border-top: var(--border-width) solid var(--color-line);
-  padding-block: var(--space-xl);
-  margin-top: var(--space-2xl);
+@media (width >= 62rem) {
+  .rail__inner {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-l));
+  }
 }
 
-.site-footer__inner {
+.rail__heading {
+  /* Optical alignment: the serif cap height sits lower in its line box than
+     the adjacent portrait's top edge, so nudge it up to match. */
+  margin-top: -0.15em;
+}
+
+/* The heavier rule dividing recent work from recent writing. */
+.rail__divider {
+  border: 0;
+  border-top: var(--border-width) solid var(--color-line-strong);
+  margin-block: var(--space-s);
+}
+
+/* Right-aligned "See all …" links. */
+.rail__more {
+  display: block;
+  text-align: right;
+  font-size: var(--step-0);
+  font-weight: var(--weight-medium);
+}
+
+/* ---- Rail card ----------------------------------------------------------
+   Title, 238x108 thumbnail, description. The whole card is clickable via an
+   overlay on the title link, which keeps one focusable element per card. */
+
+/* No gap: in the reference the thumbnail sits flush against the bottom of
+   the title's line box, and the only internal gap is above the summary. */
+.rail-card {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-m);
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0;
 }
 
-.site-footer__tagline {
-  max-width: 24ch;
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  font-weight: var(--weight-bold);
-  letter-spacing: var(--tracking-tight);
+.rail-card__title {
+  font-size: var(--step-2);
+  font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
 }
 
-.site-footer__links {
+.rail-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.rail-card__media img {
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.rail-card:hover .rail-card__media img {
+  transform: scale(1.04);
+}
+
+/* 18px, one body line unit, matching the reference's thumbnail-to-text gap. */
+.rail-card__summary {
+  margin-top: 1.125rem;
+}
+
+/* ---- Lens row -----------------------------------------------------------
+   One of the four "How I see design" blocks. */
+
+.lens__title {
+  margin-bottom: var(--space-xs);
+}
+
+.lens__body {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  /* One blank line between paragraphs, matching the reference. */
+  gap: var(--space-s);
 }
 
-.site-footer__links li + li {
-  margin-top: 0;
-}
-
-.site-footer__heading {
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  margin-bottom: var(--space-2xs);
-}
-
-.site-footer__meta {
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-  margin-top: var(--space-l);
-  padding-top: var(--space-s);
-  border-top: var(--border-width) solid var(--color-line);
-}
-
-/* ---- Buttons ------------------------------------------------------------
-   .button is the shared shape; modifiers set the color treatment. */
+/* ---- Buttons ------------------------------------------------------------ */
 
 .button {
   display: inline-flex;
@@ -272,48 +282,42 @@ body.has-nav-open {
   min-height: 2.75rem;
   padding: var(--space-2xs) var(--space-m);
   border: var(--border-width) solid transparent;
-  border-radius: var(--radius-full); /* TODO: confirm button shape */
-  font-weight: var(--weight-medium);
+  border-radius: var(--radius-full);
+  font-weight: var(--weight-semibold);
   line-height: 1.2;
   text-align: center;
-  text-decoration: none;
   transition: background-color var(--duration-fast) var(--ease-out),
               border-color var(--duration-fast) var(--ease-out),
-              color var(--duration-fast) var(--ease-out),
-              transform var(--duration-fast) var(--ease-out);
+              color var(--duration-fast) var(--ease-out);
 }
 
-.button:active {
-  transform: translateY(1px);
+.button:hover {
+  text-decoration: none;
 }
 
 .button--primary {
-  background-color: var(--color-accent);
-  color: var(--color-accent-ink);
-}
-
-.button--primary:hover {
   background-color: var(--color-ink);
   color: var(--color-bg);
 }
 
+.button--primary:hover {
+  opacity: 0.85;
+}
+
 .button--secondary {
   border-color: var(--color-line);
-  color: var(--color-ink);
 }
 
 .button--secondary:hover {
   border-color: var(--color-ink);
-  color: var(--color-ink);
 }
 
-/* Text-only action with a trailing arrow that nudges on hover. */
+/* Text action with a trailing arrow that nudges on hover. */
 .link-arrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3xs);
-  font-weight: var(--weight-medium);
-  text-decoration: none;
+  font-weight: var(--weight-semibold);
 }
 
 .link-arrow::after {
@@ -336,10 +340,6 @@ body.has-nav-open {
   padding: 0;
 }
 
-.tag-list li + li {
-  margin-top: 0;
-}
-
 .tag {
   display: inline-block;
   padding: 0.15em var(--space-2xs);
@@ -350,10 +350,8 @@ body.has-nav-open {
   white-space: nowrap;
 }
 
-/* ---- Project card ------------------------------------------------------
-   Used in the work grid and in "more projects" rows. The whole card is
-   clickable: the anchor covers it via an absolutely positioned overlay, which
-   keeps a single focusable element and preserves text selection. */
+/* ---- Project card -------------------------------------------------------
+   Used on the work index. */
 
 .project-card {
   position: relative;
@@ -364,7 +362,7 @@ body.has-nav-open {
 
 .project-card__media {
   overflow: hidden;
-  border-radius: var(--radius-m);
+  border-radius: var(--radius-l);
   background-color: var(--color-surface);
 }
 
@@ -380,28 +378,21 @@ body.has-nav-open {
   font-size: var(--step-2);
 }
 
-.project-card__link {
-  text-decoration: none;
-}
-
-/* Expands the link's hit area to the full card. */
 .project-card__link::after {
   content: "";
   position: absolute;
   inset: 0;
 }
 
-.project-card__summary {
+.project-card__summary,
+.project-card__meta {
   color: var(--color-ink-muted);
-  max-width: 42ch;
 }
 
 .project-card__meta {
-  color: var(--color-ink-muted);
   font-size: var(--step--1);
 }
 
-/* Featured variant: media and text side by side on wider screens. */
 @media (width >= 56rem) {
   .project-card--featured {
     display: grid;
@@ -411,14 +402,42 @@ body.has-nav-open {
   }
 }
 
-/* ---- Scroll reveal -----------------------------------------------------
-   Elements marked data-reveal start offset and fade in when scrolled into
-   view. js/main.js adds .is-visible; if JavaScript never runs, the fallback
-   in main.js reveals everything so content is not hidden permanently. */
+/* ---- Site footer -------------------------------------------------------- */
+
+.site-footer {
+  border-top: var(--border-width) solid var(--color-line);
+  padding-block: var(--space-l);
+  margin-top: var(--space-2xl);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer__meta {
+  color: var(--color-ink-muted);
+}
+
+/* ---- Scroll reveal ------------------------------------------------------
+   js/main.js adds .is-visible. Each page carries a <noscript> fallback that
+   reveals everything when JavaScript is unavailable. */
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(1rem);
+  transform: translateY(0.75rem);
   transition: opacity var(--duration-slow) var(--ease-out),
               transform var(--duration-slow) var(--ease-out);
 }
