@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Library — Dan Silveira</title>
-  <meta name="description" content="A collection of methods, frameworks, and references Dan Silveira returns to in design practice.">
+  <meta name="description" content="Books Dan Silveira recommends on user experience, strategy, interface design, and research.">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Library — Dan Silveira">
-  <meta property="og:description" content="Methods, frameworks, and references from design practice.">
+  <meta property="og:description" content="Books on user experience, strategy, interface design, and research.">
   <meta property="og:image" content="/assets/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/layout.css">
   <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/pages/simple.css">
+  <link rel="stylesheet" href="/css/pages/library.css">
 
   <noscript>
     <style>
@@ -52,9 +52,9 @@
           </ul>
         </nav>
 
-        <span class="site-header__avatar">
-          <img src="/assets/images/Avatar-SML.jpg" alt="" width="26" height="26">
-        </span>
+        <a class="site-header__avatar" href="/about/">
+          <img src="/assets/images/Avatar-SML.jpg" alt="About Dan Silveira" width="26" height="26">
+        </a>
       </div>
     </div>
   </header>
@@ -62,16 +62,99 @@
   <main class="site-main" id="main">
     <div class="container">
 
-      <section class="page-intro">
-        <h1 class="display page-intro__title">Library</h1>
-        <p class="page-intro__lede">
-          Methods, frameworks, and references I return to in practice.
+      <header class="library-intro">
+        <h1 class="display library-intro__title">My Library</h1>
+        <p class="library-intro__lede">
+          For those of you who find yourself on a similar path as myself, here
+          are some books to guide your way.
         </p>
-      </section>
+      </header>
 
-      <!-- TODO: no Figma design for this page yet. -->
-      <div class="page-empty">
-        <p class="text-muted">This page is not designed yet.</p>
+      <div class="library-list">
+
+        <section class="library-section" aria-labelledby="library-ux" data-reveal>
+          <h2 class="heading library-section__title" id="library-ux">User Experience Design</h2>
+          <div class="library-covers">
+            <img src="/assets/images/Lib-01.webp"
+                 alt="The Design of Everyday Things by Don Norman"
+                 width="133" height="200" decoding="async">
+            <img src="/assets/images/Lib-02.webp"
+                 alt="Solving Product Design Exercises"
+                 width="131" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-03.webp"
+                 alt="Don't Make Me Think by Steve Krug"
+                 width="154" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-04.webp"
+                 alt="Change by Design by Tim Brown"
+                 width="132" height="200" loading="lazy" decoding="async">
+          </div>
+        </section>
+
+        <section class="library-section" aria-labelledby="library-strategy" data-reveal>
+          <h2 class="heading library-section__title" id="library-strategy">Strategy</h2>
+          <div class="library-covers">
+            <img src="/assets/images/Lib-05.webp"
+                 alt="Discursive Design: Critical, Speculative, and Alternative Things"
+                 width="145" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-06.webp"
+                 alt="UX Strategy by Jaime Levy"
+                 width="133" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-07.webp"
+                 alt="How to Future by Scott Smith"
+                 width="128" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-08.webp"
+                 alt="Future Cultures by Scott Smith"
+                 width="133" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="library-covers">
+            <img src="/assets/images/Lib-09.webp"
+                 alt="Speculative Everything by Anthony Dunne and Fiona Raby"
+                 width="155" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-10.webp"
+                 alt="Business Model Generation"
+                 width="253" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-11.webp"
+                 alt="Value Proposition Design"
+                 width="253" height="200" loading="lazy" decoding="async">
+          </div>
+        </section>
+
+        <section class="library-section" aria-labelledby="library-ui" data-reveal>
+          <h2 class="heading library-section__title" id="library-ui">User Interface Design</h2>
+          <div class="library-covers">
+            <img src="/assets/images/Lib-12.webp"
+                 alt="Laws of UX by Jon Yablonski"
+                 width="133" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-13.webp"
+                 alt="Interaction of Color by Josef Albers"
+                 width="130" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-14.webp"
+                 alt="On Web Typography by Jason Santa Maria"
+                 width="129" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-15.webp"
+                 alt="Interaction Design: Beyond Human-Computer Interaction"
+                 width="159" height="200" loading="lazy" decoding="async">
+          </div>
+        </section>
+
+        <section class="library-section" aria-labelledby="library-research" data-reveal>
+          <h2 class="heading library-section__title" id="library-research">Research</h2>
+          <div class="library-covers">
+            <img src="/assets/images/Lib-16.webp"
+                 alt="Just Enough Research by Erika Hall"
+                 width="129" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-17.webp"
+                 alt="Interviewing Users by Steve Portigal"
+                 width="133" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-18.webp"
+                 alt="Mental Models by Indi Young"
+                 width="125" height="200" loading="lazy" decoding="async">
+            <img src="/assets/images/Lib-19.webp"
+                 alt="Jobs to Be Done by Jim Kalbach"
+                 width="133" height="200" loading="lazy" decoding="async">
+          </div>
+        </section>
+
       </div>
 
     </div>

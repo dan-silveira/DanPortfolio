@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Page: Library
+   Listing from assets/images/Library-REF.pdf. Content sits in a 742px band.
+   Book covers are 200px tall. Each row uses space-between so leftover
+   space is shared and nothing wraps early.
+   ========================================================================== */
+
+.library-intro {
+  max-width: var(--library-measure);
+  margin-inline: auto;
+  padding-top: calc(var(--space-l) + var(--space-2xs));
+}
+
+.library-intro__title {
+  margin-bottom: var(--space-m);
+}
+
+.library-intro__lede {
+  margin-bottom: var(--space-2xl);
+}
+
+.library-list {
+  width: 100%;
+  max-width: var(--library-measure);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--space-l) + var(--border-width));
+}
+
+.library-section {
+  position: relative;
+}
+
+.library-section:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: var(--space-l);
+  height: var(--border-width);
+  background-color: var(--color-work-rule);
+}
+
+.library-section__title {
+  margin-bottom: var(--space-l);
+}
+
+.library-covers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  row-gap: var(--space-l);
+}
+
+.library-covers + .library-covers {
+  margin-top: var(--space-l);
+}
+
+.library-covers img {
+  height: var(--library-cover-h);
+  width: auto;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+@media (width >= 48rem) {
+  .library-covers {
+    flex-wrap: nowrap;
+  }
+}

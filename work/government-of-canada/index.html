@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Digital Passport Application — Dan Silveira</title>
+  <meta name="description" content="Digitizing the passport renewal process. Product design lead and AI specialist on an IBM iX engagement for the Government of Canada, 2022–2023.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Digital Passport Application — Dan Silveira">
+  <meta property="og:description" content="Digitizing the passport renewal process.">
+  <meta property="og:image" content="/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/case-study.css">
+
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1; transform: none; }
+    </style>
+  </noscript>
+  <script>
+    try {
+      if (sessionStorage.getItem('work-unlocked') === '1') {
+        document.documentElement.classList.add('work-unlocked');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="work-gate" id="work-gate" role="dialog" aria-modal="true" aria-labelledby="work-gate-title">
+    <form class="work-gate__card" id="work-gate-form">
+      <p class="heading work-gate__title" id="work-gate-title">Enter the password to view this work.</p>
+      <label class="visually-hidden" for="work-gate-password">Password</label>
+      <input class="work-gate__input" type="password" id="work-gate-password" name="password" autocomplete="off" required>
+      <button class="button button--primary work-gate__submit" type="submit">Submit</button>
+      <p class="work-gate__error" id="work-gate-error" hidden>Incorrect password.</p>
+    </form>
+  </div>
+
+  <!-- Shared header — keep in sync across all pages -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="/">Dan Silveira</a>
+
+      <div class="site-nav-group">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bars"></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a class="site-nav__link" href="/work/">Work</a></li>
+            <li><a class="site-nav__link" href="/writing/">Writing</a></li>
+            <li><a class="site-nav__link" href="/library/">Library</a></li>
+          </ul>
+        </nav>
+
+        <a class="site-header__avatar" href="/about/">
+          <img src="/assets/images/Avatar-SML.jpg" alt="About Dan Silveira" width="26" height="26">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+    <article class="case-study">
+      <div class="container">
+
+        <header class="case-hero">
+          <h1 class="display case-hero__title">Digital Passport Application</h1>
+          <p class="heading case-hero__lede">Digitizing the passport renewal process</p>
+          <p class="case-hero__meta">Product Design Lead and AI Specialist · IBM iX engagement · 2022–2023</p>
+        </header>
+
+        <figure class="case-figure case-hero__media">
+          <div class="frame frame--goc-hero">
+            <img src="/assets/images/PassportHero-SML.jpg"
+                 alt="Government of Canada passport renewal page for uploading a digital photo, with a successful upload, photo date fields, and an 11-step progress sidebar"
+                 width="1040" height="310" fetchpriority="high" decoding="async">
+          </div>
+          <figcaption>
+            Figure 1. A snapshot of the digital passport renewal application.
+          </figcaption>
+        </figure>
+
+        <div class="case-intro case-prose">
+          <p>
+            In 2022, I led the product design team for the Government of
+            Canada's new digital passport application service, joining as both
+            design lead and AI specialist.
+          </p>
+          <p>
+            With passport renewals surging, wait times at service centres
+            continued to grow, leading the Government of Canada to invest in a
+            fully digital passport renewal application to streamline the
+            process. This solution allows citizens to renew their passports from
+            home, improving accessibility and convenience. A key feature of the
+            system is a real-time computer-vision tool that automatically
+            validates passport photos during submission, reducing errors and
+            accelerating processing times. By digitizing the renewal process and
+            implementing AI-driven technology, the government aimed to enhance
+            the user experience and optimize operational efficiency,
+            significantly reducing manual workloads and service bottlenecks.
+          </p>
+          <p>
+            This case study will focus on the initial problem we set off to
+            solve by digitizing the passport application experience, and how we
+            determined the best way to incorporate an AI-powered photo
+            verification feature.
+          </p>
+        </div>
+
+        <section class="case-section" aria-labelledby="problem-title">
+          <h2 class="heading case-section__title" id="problem-title">Problem to solve</h2>
+
+          <div class="case-prose">
+            <p>
+              To help resolve this issue for citizens, the Government of Canada
+              reached out to IBM to build a full end-to-end web application that
+              would allow people to quickly and easily renew their passports
+              online. To do this successfully, the application needed to:
+            </p>
+            <ul>
+              <li>
+                Provide a simplified responsive experience that would enable any
+                Canadian to renew their passport online via desktop or mobile.
+              </li>
+              <li>
+                Accommodate both English and French translations of the content
+                within the layout.
+              </li>
+              <li>
+                Enable citizens to upload a passport photo and have it evaluated
+                in real time by AI.
+              </li>
+              <li>
+                Allow citizens to pay using their credit card online.
+              </li>
+              <li>
+                Support renewing passports for dependents.
+              </li>
+              <li>
+                Adhere to the highest standard of accessibility criteria.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="landscape-title">
+          <h2 class="heading case-section__title" id="landscape-title">Landscape analysis</h2>
+
+          <div class="case-split case-split--goc-nz media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--goc-nz">
+                  <img src="/assets/images/PassportNZ-SML.jpg"
+                       alt="New Zealand Government page titled Renew or replace your adult passport, with left-hand navigation and passport timeframe guidance"
+                       width="567" height="262" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 2. The New Zealand Government’s application.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                As we translated business requirements into user stories with
+                well-defined acceptance criteria, I led a landscape analysis in
+                collaboration with the product managers, business analysts, and
+                designers. This involved researching online passport renewal
+                services from other governments for benchmarking. During this
+                process, we identified the New Zealand Government's digital
+                renewal tool as an ideal comparison, as it also uses computer
+                vision technology to evaluate passport photos in real time. New
+                Zealand's implementation demonstrated an ethical approach to
+                communicating the use of artificial intelligence to users during
+                the photo evaluation process, along with the ability to opt out
+                if they were uncomfortable with its usage, which we used as a
+                foundation when building out our own.
+              </p>
+              <p>
+                This analysis allowed us to uncover gaps in our own acceptance
+                criteria, task flows, and content design, leading to critical
+                improvements before moving into development.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="leadership-title">
+          <h2 class="heading case-section__title" id="leadership-title">Cross-functional team leadership</h2>
+
+          <div class="case-split case-split--goc-team media-split">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--goc-team">
+                  <img src="/assets/images/PassportTeam-SML.jpg"
+                       alt="Hub-and-spoke diagram with Lead Designer at the centre, connected to Product Manager, Business Analysts, Content Designer, ML Engineer and Data Scientist, Architect, and Developers"
+                       width="438" height="397" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 3. The project stakeholder map.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                Building a government web application that incorporates
+                artificial intelligence to automate processes required consistent
+                communication with pod members throughout the project.
+              </p>
+              <p>
+                Early on, I identified the need for a central point of alignment
+                to keep the team synchronized as we worked rapidly toward our
+                business objectives, and I assumed that role throughout the
+                project. This included taking the lead on using Jira to document
+                key decisions and ensure that all stakeholders had access to
+                up-to-date information at every stage of development.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="styleguide-title">
+          <h2 class="heading case-section__title" id="styleguide-title">Style guide and design system</h2>
+
+          <div class="case-split case-split--goc-style media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--goc-style">
+                  <img src="/assets/images/PassportStyle-SML.jpg"
+                       alt="Application card component spec showing Incomplete and Complete states, numbered callouts, and pixel measurements"
+                       width="508" height="542" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 4. The new Government of Canada Passport design system.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                The Government of Canada has strict branding criteria that all
+                new websites and applications must adhere to, though the look
+                and feel can vary by department. For this project, one key
+                requirement was to develop a comprehensive design system and
+                style guide tailored specifically for Immigration, Refugees and
+                Citizenship Canada (IRCC) to ensure consistency across all
+                future applications.
+              </p>
+              <p>
+                We began by conducting thorough design research on the existing
+                branding standards to guide our decision-making as we designed
+                each component. The style guide clearly outlined the layout,
+                structure, sizing, and variations for all components used in the
+                passport renewal application.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="renewal-title">
+          <h2 class="heading case-section__title" id="renewal-title">Designing the application renewal experience</h2>
+
+          <div class="case-prose">
+            <p>
+              With one of the business objectives being to streamline the
+              passport renewal process, it was important to design an experience
+              that was quick and efficient for citizens to complete when
+              renewing their passport. However, speed wasn't the only criterion
+              for providing citizens with a good experience. We really needed to
+              think about all Canadians and how their different scenarios and
+              situations may mean we design the experience a bit differently to
+              accommodate everyone.
+            </p>
+            <p>
+              This meant considering Canadians of different age groups, language
+              skills, computer skills, and accessibility needs to ensure that
+              any Canadian, no matter who they are, can renew their passport
+              online easily. This involved working with the accessibility team
+              to make sure we met the established accessibility requirements,
+              and working with content designers to make sure the language being
+              used could be understood by all citizens, no matter their
+              proficiency in English.
+            </p>
+            <p>
+              We further addressed these issues by developing an end-to-end
+              design process that included an accessibility review, in addition
+              to a content style guide to ensure we were using clear and
+              simplified terms consistently throughout the platform.
+            </p>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--goc-account">
+              <img src="/assets/images/PassportAccount-SML.jpg"
+                   alt="Create a passport application account screen with an email field, Back and Continue buttons, and a six-step account-creation progress list"
+                   width="1040" height="501" loading="lazy" decoding="async">
+            </div>
+            <figcaption>Figure 5. Example of the accessibility and language optimized designs.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section" aria-labelledby="photo-title">
+          <h2 class="heading case-section__title" id="photo-title">Designing the photo evaluation experience</h2>
+
+          <div class="case-split case-split--goc-review media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--goc-review">
+                  <img src="/assets/images/PassportReview-SML.jpg"
+                       alt="Internal analyst photo-review tool with a passport portrait, Photochecker versus Reviewer decision columns, and agree or disagree toggles"
+                       width="508" height="295" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 6. Internal-facing application review page.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                The photo evaluation feature also required an internal-facing
+                application for IRCC employees, which demanded close
+                coordination with the machine learning engineers and data
+                scientists to ensure that the AI model used for evaluating
+                passport photos was feasible within the given time frame. Since
+                the model needed extensive training to accurately assess whether
+                photos met passport requirements, eliminating potential
+                technical vulnerabilities was critical to prevent exploitation by
+                bad actors.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-split case-split--goc-model media-split">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--goc-model">
+                  <img src="/assets/images/PassportModel-SML.jpg"
+                       alt="Overall Model Performance dashboard with a precision and recall chart, a parameter table, and tuning controls for face detection and chin location"
+                       width="508" height="347" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 7. Threshold tuning interface for the AI model.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                Alongside the technical team, I also collaborated closely with
+                the IRCC stakeholder team to create a process where humans would
+                verify the AI's photo assessments until the model reached full
+                confidence. This involved designing a user interface for
+                employees to review the AI's analysis, as well as a page to
+                adjust the model's sensitivity for specific photo evaluation
+                criteria. Developing these screens, alongside the computer
+                vision functionality, was both challenging and rewarding,
+                knowing that, if done right, it would greatly accelerate the
+                passport renewal process for citizens across the country.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="impact-title">
+          <h2 class="heading case-section__title" id="impact-title">Impact</h2>
+
+          <div class="case-split case-split--goc-impact media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--goc-impact">
+                  <img src="/assets/images/PassportHero-SML.jpg"
+                       alt="Government of Canada passport photo upload screen delivered at launch, with a successful photo upload and progress sidebar"
+                       width="709" height="818" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 8. The photo submission page and application progress tree.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                For Canadians, this new online passport web application provides
+                a brand new experience that makes renewing a passport faster and
+                easier than ever before while reducing wait times at physical
+                locations, achieving the Government of Canada's business and
+                experience objectives.
+              </p>
+              <p>
+                In addition to the successful launch of the product, I was able
+                to deliver a fully developed design system and style guide for
+                government employees to use after my departure from the project
+                following launch.
+              </p>
+              <p>
+                Our ethical approach to implementing an AI-driven photo
+                evaluation feature lets users decide whether they would like to
+                use it to speed up the processing of their passports. They can
+                feel comfortable knowing exactly how their data will be used and
+                stored, while retaining the ability to opt out if they do not
+                wish to use the feature.
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- Shared footer — keep in sync across all pages -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <ul class="site-footer__links">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/library/">Library</a></li>
+      </ul>
+      <p class="site-footer__meta">&copy; 2026 Dan Silveira</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -141,6 +141,12 @@
   overflow: hidden;
   background-color: var(--color-surface);
   flex: 0 0 auto;
+  transition: box-shadow var(--duration-base) var(--ease-out);
+}
+
+.site-header__avatar:hover,
+.site-header__avatar:focus-visible {
+  box-shadow: var(--shadow-avatar);
 }
 
 .site-header__avatar img {
@@ -221,16 +227,21 @@ body.has-nav-open {
 }
 
 /* ---- Rail card ----------------------------------------------------------
-   Title, 238x108 thumbnail, description. The whole card is clickable via an
-   overlay on the title link, which keeps one focusable element per card. */
+   Title, 238x108 thumbnail, description. The title link is stretched across
+   the whole card so the title, thumbnail, and summary share a single hit
+   area and a single focusable element. */
 
-/* No gap: in the reference the thumbnail sits flush against the bottom of
-   the title's line box, and the only internal gap is above the summary. */
 .rail-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--space-2xs);
+}
+
+.rail-card__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
 }
 
 .rail-card__title {
@@ -239,10 +250,13 @@ body.has-nav-open {
   line-height: var(--leading-snug);
 }
 
+/* .frame is itself positioned, so the thumbnail would otherwise paint over
+   this overlay and swallow clicks on the image. */
 .rail-card__link::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
 }
 
 .rail-card__media img {
@@ -253,16 +267,11 @@ body.has-nav-open {
   transform: scale(1.04);
 }
 
-/* 18px, one body line unit, matching the reference's thumbnail-to-text gap. */
-.rail-card__summary {
-  margin-top: 1.125rem;
-}
-
 /* ---- Lens row -----------------------------------------------------------
    One of the four "How I see design" blocks. */
 
 .lens__title {
-  margin-bottom: var(--space-xs);
+  margin-bottom: var(--space-2xs);
 }
 
 .lens__body {
@@ -382,6 +391,7 @@ body.has-nav-open {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
 }
 
 .project-card__summary,
@@ -399,6 +409,69 @@ body.has-nav-open {
     grid-template-columns: 1.25fr 1fr;
     gap: var(--space-xl);
     align-items: center;
+  }
+}
+
+/* ---- Work password gate -------------------------------------------------
+   Courtesy lock on /work/ pages. Header stays above so navigation still
+   works. html.work-unlocked is set from sessionStorage before paint. */
+
+.work-gate {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-work-gate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+  background-color: color-mix(in srgb, var(--color-bg) 55%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+html.work-unlocked .work-gate {
+  display: none;
+}
+
+html:not(.work-unlocked):has(.work-gate) {
+  overflow: hidden;
+}
+
+.work-gate__card {
+  width: 100%;
+  max-width: 22rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  padding: var(--space-l);
+  background-color: var(--color-white);
+  border: var(--border-width) solid var(--color-stroke);
+  border-radius: var(--radius-l);
+}
+
+.work-gate__title {
+  margin: 0;
+}
+
+.work-gate__input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-2xs) var(--space-s);
+  border: var(--border-width) solid var(--color-line-strong);
+  border-radius: var(--radius-m);
+  background-color: var(--color-bg);
+}
+
+.work-gate__error {
+  margin: 0;
+  font-size: var(--step-0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-gate {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
   }
 }
 

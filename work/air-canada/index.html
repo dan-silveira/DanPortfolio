@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Air Canada — Dan Silveira</title>
+  <meta name="description" content="Advancing design maturity across practice and strategy at Air Canada. Design lead and coach on an IBM iX engagement, 2024–2026.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Air Canada — Dan Silveira">
+  <meta property="og:description" content="Advancing design maturity across practice and strategy.">
+  <meta property="og:image" content="/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/case-study.css">
+
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1; transform: none; }
+    </style>
+  </noscript>
+  <script>
+    try {
+      if (sessionStorage.getItem('work-unlocked') === '1') {
+        document.documentElement.classList.add('work-unlocked');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="work-gate" id="work-gate" role="dialog" aria-modal="true" aria-labelledby="work-gate-title">
+    <form class="work-gate__card" id="work-gate-form">
+      <p class="heading work-gate__title" id="work-gate-title">Enter the password to view this work.</p>
+      <label class="visually-hidden" for="work-gate-password">Password</label>
+      <input class="work-gate__input" type="password" id="work-gate-password" name="password" autocomplete="off" required>
+      <button class="button button--primary work-gate__submit" type="submit">Submit</button>
+      <p class="work-gate__error" id="work-gate-error" hidden>Incorrect password.</p>
+    </form>
+  </div>
+
+  <!-- Shared header — keep in sync across all pages -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="/">Dan Silveira</a>
+
+      <div class="site-nav-group">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bars"></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a class="site-nav__link" href="/work/">Work</a></li>
+            <li><a class="site-nav__link" href="/writing/">Writing</a></li>
+            <li><a class="site-nav__link" href="/library/">Library</a></li>
+          </ul>
+        </nav>
+
+        <a class="site-header__avatar" href="/about/">
+          <img src="/assets/images/Avatar-SML.jpg" alt="About Dan Silveira" width="26" height="26">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+    <article class="case-study">
+      <div class="container">
+
+        <header class="case-hero">
+          <h1 class="display case-hero__title">Air Canada</h1>
+          <p class="heading case-hero__lede">Advancing design maturity across practice and strategy</p>
+          <p class="case-hero__meta">Design lead and coach · IBM iX engagement · 2024–2026</p>
+        </header>
+
+        <figure class="case-figure case-hero__media">
+          <div class="frame frame--ac-hero">
+            <img src="/assets/images/ACHero-BW-SML.jpg"
+                 alt="The Air Canada design team gathered in an office, photographed in black and white with one person in colour"
+                 width="1040" height="250" fetchpriority="high" decoding="async">
+          </div>
+          <!-- TODO: PDF Figure 1 caption describes the pre-Compass flight
+               results UI; the supplied export is this team photograph. -->
+          <figcaption>
+            Figure 1. The Air Canada design team during the Speculative Designathon.
+          </figcaption>
+        </figure>
+
+        <div class="case-intro case-prose">
+          <p>
+            In 2025, I led the product design team for Air Canada's booking
+            experience. Alongside delivery, I launched a coaching program for
+            designers and drove practice-maturity initiatives that together
+            broadened designer skill sets, improved design operations, and
+            created a more strategic design process.
+          </p>
+          <p>
+            When I first joined the engagement, I quickly uncovered that the
+            booking experience had evolved over the years but lacked scalability
+            in some key aspects of the user interface. Components were
+            inconsistent across the booking, shopping, and management flows, and
+            the Compass Design System, recently introduced, was sitting largely
+            unadopted outside of the homepage. The more I looked at the product,
+            the more it became clear that the product issues were a symptom;
+            what the team needed was professional development and practice
+            maturity to make more thoughtful and innovative decisions in the
+            future. My job as a consultant with Air Canada wasn't going to be
+            simply shipping a better booking experience and then leaving, but to
+            develop an environment where the team could continue shipping better
+            work long after I was gone.
+          </p>
+          <p>
+            This case study will provide a snapshot of each of the key
+            initiatives I worked on: the design work, coaching, and practice
+            maturity to demonstrate how I helped improve the way product design
+            is done at Air Canada.
+          </p>
+        </div>
+
+        <!-- Product design -->
+        <section class="case-section" aria-labelledby="product-title">
+          <h2 class="heading case-section__title" id="product-title">Product design</h2>
+
+          <div class="case-split media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--ac-trip">
+                  <img src="/assets/images/TripReviewCN-SML.jpg"
+                       alt="The original Air Canada trip view page stacked above the redesigned trip review page, which adds a flight timeline and progress bar"
+                       width="438" height="262" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 2. The original trip view page (top) compared to the new
+                  trip review page (below), with new flight and progress bar.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                Air Canada's web booking flow had gone through a pretty
+                significant overhaul a year before my arrival; however, as it
+                grew more complex with new requirements from the business, the
+                designs struggled to scale while being consistent. I was also
+                surprised to discover that a thorough design system had been
+                developed but had not yet been adopted within the booking,
+                shopping, and management experiences.
+              </p>
+              <p>
+                I first began by evaluating the current library of components
+                being used within the designs of these core experiences to
+                identify how they differed from the design system and create a
+                plan of adoption based on design and development priority and
+                feasibility scores.
+              </p>
+              <p>
+                While evaluating the design system, another issue arose: since
+                the design system was created with a focus on the homepage,
+                which has the luxury of not having to fit as much content into
+                its layout and components, there would need to be some new
+                variants needed for the design system to work for the booking,
+                shopping, and manage experiences, in addition to a few
+                additional components needed specifically for these designs.
+              </p>
+              <p>
+                This revelation led me to work with the lead designer for the
+                design system to adopt component variants I had developed, in
+                addition to adding brand new components that I created to improve
+                the scalability of our designs and meet the needs of upcoming
+                business requirements.
+              </p>
+            </div>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--ac-compass">
+              <img src="/assets/images/CompassImprv-IMG.jpg"
+                   alt="Side-by-side comparison of the Air Canada departing-flight results page before and after Compass implementation"
+                   width="1040" height="350" loading="lazy" decoding="async">
+            </div>
+            <figcaption>
+              Figure 3. The flight results page before Compass implementation
+              (left) compared to the updated version (right). The original
+              designs relied on a filter system and patterns that reduced
+              scalability and didn't hold up across breakpoints, in addition to
+              not being consistent with other pages.
+            </figcaption>
+          </figure>
+
+          <div class="case-prose">
+            <p>
+              A key example of this was the drawer component family I designed
+              as a scalable alternative for displaying content-heavy
+              information, which up until then was always being displayed within
+              a scrollable modal. Drawers used the full viewport height, adapted
+              cleanly across all breakpoints and gave the team a consistent
+              interaction pattern to apply across multiple designs. The drawer
+              family became a reusable pattern the team could carry across
+              experiences, reducing one-off design decisions and bringing more
+              consistency to the overall experience from search through to
+              payment. It also opened the door to reviewing other components
+              that may be suffering from a similar problem.
+            </p>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--ac-drawer">
+              <img src="/assets/images/FilterDrawer-SML.jpg"
+                   alt="Air Canada departing-flight results with the filters drawer open on the right"
+                   width="1200" height="1004" loading="lazy" decoding="async">
+              <img src="/assets/images/FlightDetails-SML.jpg"
+                   alt="Trip review with the flight details drawer open, showing a Toronto to Montreal itinerary"
+                   width="1200" height="1136" loading="lazy" decoding="async">
+              <img src="/assets/images/MiniRules-Drawer-SML.jpg"
+                   alt="Trip review with the detailed fare rules drawer open for a Premium Economy fare"
+                   width="1200" height="853" loading="lazy" decoding="async">
+            </div>
+            <figcaption>
+              Figure 4. The drawer component family: filters, flight details,
+              and fare rules.
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- Coaching -->
+        <section class="case-section" aria-labelledby="coaching-title">
+          <h2 class="heading case-section__title" id="coaching-title">Coaching</h2>
+
+          <div class="case-split case-split--coaching media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--ac-coaching">
+                  <img src="/assets/images/ProfessionalDev-SML.jpg"
+                       alt="Three coloured canvases from a goal transformation workshop, with skills lists, effort-impact charts, and a quarterly objectives calendar"
+                       width="512" height="172" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 5. The goal transformation activity developed for the
+                  coaching program.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                One of the primary reasons Air Canada asked me to join the
+                engagement was due to my experience as a university professor
+                outside of my work at IBM. They wanted me to join the team not
+                only as a designer but as a design coach to elevate the design
+                team's capabilities. This was a unique and exciting opportunity
+                which led to me developing Air Canada's coaching program.
+              </p>
+              <p>
+                I began by establishing a bi-weekly coaching cadence with 12
+                designers, each session tailored to the individual designer's
+                experience, goals, and current project challenges. Coaching
+                covered UX fundamentals, stakeholder communication, design
+                critique, presentation, and strategy. This created a consistent
+                feedback loop that compounded over time.
+              </p>
+              <p>
+                The challenge with coaching at this scale is that progress can go
+                unnoticed. I also saw that the goals designers set for their
+                bi-annual reviews were written at the last minute and never
+                tracked. To address both problems, I developed a goal
+                transformation framework: a workshop I ran with each designer to
+                define actionable objectives, each linked to one of their three
+                annual goals. For every objective, we identified the skill to
+                refine or develop, built a plan to get there, and set monthly
+                milestones. Our sessions throughout the year then became an
+                opportunity to review progress, unblock challenges, and adjust
+                direction as the work evolved.
+              </p>
+              <p>
+                The result: designers came to sessions with a shared point of
+                reference instead of starting from scratch each time. The
+                framework gave them ownership over their own development rather
+                than a queue of feedback to respond to, while also creating
+                opportunities to showcase those advances to the larger team. One
+                designer even won first place in an external designathon that she
+                signed up for as one of her objectives.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Practice maturity -->
+        <section class="case-section" aria-labelledby="maturity-title">
+          <h2 class="heading case-section__title" id="maturity-title">Practice maturity</h2>
+
+          <div class="case-split case-split--club media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--ac-club">
+                  <img src="/assets/images/MonthlyDesignClub-SML.jpg"
+                       alt="Designers seated around a conference table during a Monthly Design Club session"
+                       width="504" height="226" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 6. Introducing our Monthly Design Club speakers.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                Beyond individual coaching, I was tasked with maturing Air
+                Canada's design practice. It had worked well enough up to this
+                point, but the team had outgrown it, and for the designers to
+                keep advancing, the practice needed to evolve with them. Some of
+                the core issues I identified were silos of knowledge and
+                redundancy between design teams, a lack of standardization for
+                design-related information and operations, and a limited focus
+                on exposing the team to new skills and methodologies.
+              </p>
+              <p>
+                One of the first things I implemented was the Monthly Designers
+                Club, where I brought in subject matter experts from my network
+                to come and present to the Air Canada design team once a month
+                on topics from user research to designing with AI. This
+                low-commitment, one-hour session a month invigorated designers
+                and got them excited about practicing and leading some of these
+                methodologies within their teams.
+              </p>
+              <p>
+                I then centralized all design-related information into a
+                Confluence-based knowledge hub where designers, no matter the
+                team, could access or contribute to the standardization of how we
+                conduct research, inform strategy, leverage metrics, or even train
+                a new hire. This was the first time Air Canada had a single source
+                of truth for their design team, and to ensure its continual
+                success, I assigned specific designers to own certain sections of
+                the knowledge centre.
+              </p>
+              <p>
+                From there, I was asked to lead the design management team in
+                identifying and executing initiatives that would further mature
+                the design practice. Some of these included design operation
+                initiatives like improving the design request intake workflow,
+                implementing a more thorough design quality assessment review, and
+                building out an AI design workflow.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-split case-split--club media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--ac-club-solo">
+                  <img src="/assets/images/PracticeMaturity-SML.jpg"
+                       alt="A brainstorming board of practice-maturity themes beside a value-versus-feasibility plot"
+                       width="504" height="226" loading="lazy" decoding="async">
+                </div>
+                <figcaption>
+                  Figure 7. Brainstorming session for identifying practice maturity
+                  initiatives.
+                </figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                One of the more ambitious projects I led as part of the practice
+                maturity initiative was planning and hosting a full-day Speculative
+                Designathon for the entire product, design, and development
+                organization. This event involved a month-long research initiative
+                to identify emerging trends within the airline and travel
+                industry, and to combine those with emerging technology trends I
+                had earlier documented in my annual trends report to develop
+                future scenarios. The goal of this event was to tackle a larger
+                problem with the digital product team, which is that they had
+                become so focused on small incremental changes that they lacked a
+                shared vision of the future to build their roadmap toward.
+              </p>
+              <p>
+                I assigned each group an equal mix of product managers, designers,
+                and developers. Every group received a future scenario, the trends
+                driving it, and an evolved version of one of our personas. Their
+                task was to design a new experience that might exist on Air
+                Canada's platform five years from now, 2031, using AI to rapidly
+                prototype their concept before presenting to a panel of executive
+                judges. The event was so successful that we will be hosting a
+                similar future-looking event for each year-end to influence the
+                following year's product roadmap.
+              </p>
+            </div>
+          </div>
+
+          <div class="case-pair">
+            <figure>
+              <div class="frame frame--ac-workbook">
+                <img src="/assets/images/Workbook-SML.jpg"
+                     alt="Pages from the Speculative Designathon workbook, including the project brief, operating protocol, and future scenarios"
+                     width="378" height="350" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Figure 8. Examples: Speculative Designathon workbook.</figcaption>
+            </figure>
+            <figure>
+              <div class="frame frame--ac-event">
+                <img src="/assets/images/SpecDesignathon-SML.jpg"
+                     alt="Composite of Speculative Designathon event photos showing teams working in the studio"
+                     width="630" height="350" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Figure 9. Event photos from the Speculative Designathon.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="case-section" aria-labelledby="impact-title">
+          <h2 class="heading case-section__title" id="impact-title">Impact</h2>
+
+          <div class="case-prose">
+            <p>
+              On the product design side, the design system that was once
+              sitting unadopted outside the homepage is being actively used
+              across the core flows within booking, shopping, and management.
+              New potential components go through an overall fit check before
+              being implemented in the design system to avoid single-focused
+              components from causing designers to detach and build custom
+              components on a daily basis.
+            </p>
+            <p>
+              On the coaching and practice side, the changes were more
+              structural. The twelve designers I coach now work from goal
+              frameworks they own and track throughout the year rather than
+              writing objectives that they quickly forget about. The coaching
+              program is now evolving to include all the designers within the
+              practice, in addition to identifying new coaches to join the
+              program on its mentorship side. The knowledge hub gave Air Canada
+              its first single source of truth for design, with designers
+              responsible for maintaining it, and the Monthly Designers Club
+              continues to expose the team to methodologies they are now leading
+              themselves. The Speculative Designathon shifted the organization's
+              short-term perspective to a shared vision of the future, and it is
+              now becoming an annual event that feeds directly into the product
+              roadmap.
+            </p>
+            <p>
+              The client recognized both as meaningful outcomes. But the outcome
+              I value most is the one I set out to achieve at the start of the
+              engagement: the team is not dependent on me for any of it. The
+              systems, the frameworks, and the practices all have owners inside
+              Air Canada, which means the work keeps improving long after my
+              engagement ends.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- Shared footer — keep in sync across all pages -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <ul class="site-footer__links">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/library/">Library</a></li>
+      </ul>
+      <p class="site-footer__meta">&copy; 2026 Dan Silveira</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/layout.css">
   <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/pages/simple.css">
+  <link rel="stylesheet" href="/css/pages/writing.css">
 
   <noscript>
     <style>
@@ -52,9 +52,9 @@
           </ul>
         </nav>
 
-        <span class="site-header__avatar">
-          <img src="/assets/images/Avatar-SML.jpg" alt="" width="26" height="26">
-        </span>
+        <a class="site-header__avatar" href="/about/">
+          <img src="/assets/images/Avatar-SML.jpg" alt="About Dan Silveira" width="26" height="26">
+        </a>
       </div>
     </div>
   </header>
@@ -62,20 +62,180 @@
   <main class="site-main" id="main">
     <div class="container">
 
-      <section class="page-intro">
-        <h1 class="display page-intro__title">Writing</h1>
-        <p class="page-intro__lede">
-          Articles and research on strategic foresight, system thinking, and the
-          practice of design.
-        </p>
-      </section>
+      <header class="writing-intro">
+        <h1 class="display writing-intro__title">Writing</h1>
+      </header>
 
-      <!-- TODO: no Figma design for this page yet. The three articles surfaced
-           in the homepage rail (Trends Report 2026, The Design-Knowledge
-           Framework, The Fog of Now) belong here once their layout is decided. -->
-      <div class="page-empty">
-        <p class="text-muted">This page is not designed yet.</p>
-      </div>
+      <section class="writing-list" aria-label="Articles">
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Report-WR.webp"
+                 alt="Cover of Trends Report 2026"
+                 width="200" height="200" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">Trends Report 2026</h2>
+            <p class="writing-entry__body">
+              Read the first annual trends report written by Dan Silveira for the
+              Strategic Foresight Guild. This year-long study explored the
+              emerging signals and key trends that shaped technology in 2025 for
+              product teams and strategists to develop stronger product
+              strategies for the year ahead.
+            </p>
+            <a class="writing-entry__link"
+               href="https://bullfrog-sepia-c27b.squarespace.com/reports"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Puzzle-WR.webp"
+                 alt="White jigsaw puzzle with one piece missing"
+                 width="200" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">The Design-Knowledge Framework</h2>
+            <p class="writing-entry__body">
+              Discover a new framework for structuring AI prompts using
+              established design principles and contextual understanding. The
+              Design-Knowledge Framework teaches AI tools to follow the same
+              critical thinking process designers use, moving beyond
+              pattern-matching to produce outputs grounded in human-centered
+              design thinking.
+            </p>
+            <a class="writing-entry__link"
+               href="https://danielsilveira.substack.com/p/the-design-knowledge-framework"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Fog-WR.webp"
+                 alt="Fog obscuring the horizon over open water"
+                 width="200" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">The Fog of Now</h2>
+            <p class="writing-entry__body">
+              Explore how organizations become so fixated on present-day
+              customer needs and agile sprint cycles that they lose sight of
+              emerging futures. This article argues for layering strategic
+              foresight methodologies onto agile practices, enabling teams to
+              develop future-oriented visions guided by emerging trends rather
+              than optimizing solely for the present.
+            </p>
+            <a class="writing-entry__link"
+               href="https://danielsilveira.substack.com/p/the-fog-of-now"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Jays-WR.webp"
+                 alt="Blue jays perched among branches"
+                 width="200" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">We're Surrounded by Signals, Now What?</h2>
+            <p class="writing-entry__body">
+              While we're all natural signal-gatherers, organizations fail to
+              harness this collective intelligence because knowledge remains
+              siloed within subject matter experts. This article provides a
+              practical framework for documenting and organizing signals into a
+              Central Signal Repository, enabling teams to spot emerging trends
+              before they fully materialize.
+            </p>
+            <a class="writing-entry__link"
+               href="https://danielsilveira.substack.com/p/were-surrounded-by-signals-now-what?r=3vqmt3"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Guide-WR.webp"
+                 alt="Printed UI style guide pages"
+                 width="200" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">A Brief Guide to Creating a UI Style Guide</h2>
+            <p class="writing-entry__body">
+              Creating a UI style guide takes time but will help you streamline
+              the design process and keep all team members aligned as you design
+              new products. If you're developing a style guide for your design
+              team, this article has all the information you'll need to get
+              started.
+            </p>
+            <a class="writing-entry__link"
+               href="https://xd.adobe.com/ideas/process/ui-design/ui-style-guide-template/"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Bulb-WR.webp"
+                 alt="Illustrated light bulb"
+                 width="200" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">Design Inspiration for UX and UI Workflows</h2>
+            <p class="writing-entry__body">
+              One of the most difficult parts of being a designer is when you
+              receive a brand-new project but have no idea how to get started.
+              That's why it's vital for all designers, no matter their level of
+              experience, to maintain a list of places to visit for design
+              inspiration.
+            </p>
+            <a class="writing-entry__link"
+               href="https://xd.adobe.com/ideas/principles/design-systems/design-inspirations-ux-ui/"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Empathy-WR.webp"
+                 alt="Abstract illustration of overlapping figures"
+                 width="200" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">Empathy | A UX Perspective</h2>
+            <p class="writing-entry__body">
+              We as UX Designers are curious by nature. We often spend our time
+              thinking of questions and exploring new ways to better understand
+              the people we build products for.
+            </p>
+            <a class="writing-entry__link"
+               href="https://medium.com/design-ibm/an-exploration-of-empathy-a-ux-perspective-7f05e4af0863"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="writing-entry" data-reveal>
+          <div class="writing-entry__media">
+            <img src="/assets/images/Fruit-WR.webp"
+                 alt="Arranged fruit still life"
+                 width="200" height="200" loading="lazy" decoding="async">
+          </div>
+          <div class="writing-entry__body-col">
+            <h2 class="heading writing-entry__title">What is the Unity Principle of Design?</h2>
+            <p class="writing-entry__body">
+              Unity is the principle of design that unifies all other principles
+              within a piece of work, allowing each individual element to
+              coexist with one another to form an aesthetically pleasing design.
+            </p>
+            <a class="writing-entry__link"
+               href="https://xd.adobe.com/ideas/process/ui-design/principles-design-unity/"
+               target="_blank" rel="noopener noreferrer">Read →<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+      </section>
 
     </div>
   </main>

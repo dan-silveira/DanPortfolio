@@ -16,9 +16,13 @@
   --color-line-strong: #cdcdcd; /* ref */
 
   /* Derived, not in the reference: a neutral for image placeholders and for
-     secondary text on the inner pages. */
+     secondary text on the inner pages. White fills diagram frames so contain
+     letterboxing matches the export. */
   --color-surface: #e8e7e2;
   --color-ink-muted: #5c5c57;
+  --color-white: #ffffff;
+  --color-board: #f1f1f1;
+  --color-work-rule: #a0a0a0;
 
   --color-focus: var(--color-ink);
 
@@ -35,7 +39,7 @@
   --weight-bold: 700;      /* logo */
 
   /* Fixed scale. The reference contains exactly four sizes; steps 4 and 5
-     exist only for the case study pages, which have no Figma reference yet. */
+     exist for inner pages that need a larger display size than the 24px H1. */
   --step--1: 0.75rem;   /* 12px  meta */
   --step-0: 0.875rem;   /* 14px  body            ref */
   --step-1: 1rem;       /* 16px  nav links       ref */
@@ -78,6 +82,18 @@
   --rail-content: 14.875rem;   /* 238  ref */
   --main-width: 57.125rem;     /* 914  ref */
   --container-narrow: 45rem;   /* long-form prose on inner pages */
+  --work-measure: 55.1875rem;  /* 883, RecentWork-REF content band */
+  --work-thumb-w: 21.3125rem;  /* 341 */
+  --work-row-h: 18.25rem;      /* 292 */
+  --work-thumb: 341 / 292;
+  --writing-measure: 46.375rem; /* 742, Writing-REF content band */
+  --writing-thumb: 12.5rem;     /* 200 */
+  --writing-row-h: 12.5rem;     /* 200 */
+  --about-measure: 55.1875rem;  /* 883, About-REF content band */
+  --about-photo-w: 21.3125rem;  /* 341 */
+  --about-photo-h: 22.5rem;     /* 360 */
+  --library-measure: 46.375rem; /* 742, Library-REF content band */
+  --library-cover-h: 12.5rem;    /* 200 */
 
   /* ---- Component geometry ------------------------------------------------ */
   --portrait-size: 13.875rem;  /* 222      ref */
@@ -87,6 +103,53 @@
   --thumb-height: 6.75rem;     /* 108      ref, confirmed by the exports */
   --avatar-size: 1.625rem;     /* 26       ref */
 
+  /* Air Canada case study figures, from AC-REF.pdf at the 1040 content width. */
+  --case-measure: 65rem;           /* 1040 */
+  --case-hero: 1040 / 250;
+  --case-fig-trip: 438 / 262;
+  --case-fig-compass: 1040 / 350;
+  --case-fig-drawer: 1040 / 290;
+  --case-fig-coaching: 512 / 172;
+  --case-fig-club: 504 / 226;
+  --case-fig-workbook: 378 / 350;
+  --case-fig-event: 630 / 350;
+  --case-w-trip: 27.375rem;        /* 438 */
+  --case-w-coaching: 32rem;        /* 512 */
+  --case-w-club: 31.5rem;          /* 504 */
+  --case-w-workbook: 23.625rem;    /* 378 */
+  --case-w-event: 39.375rem;       /* 630 */
+
+  /* RBC Clear case study figures, from RBC-REF.pdf at the 1040 content width. */
+  --case-fig-rbc-hero: 1040 / 310;
+  --case-fig-rbc-process: 1040 / 384;
+  --case-fig-rbc-taskflow: 1040 / 538;
+  --case-fig-rbc-lofi: 520 / 410;
+  --case-fig-rbc-insight: 520 / 348;
+  --case-fig-rbc-stakeholder: 508 / 435;
+  --case-fig-rbc-cards: 508 / 435;
+  --case-fig-rbc-widgets: 844 / 709;
+  --case-fig-rbc-awards: 1040 / 214;
+  --case-w-rbc-lofi: 32.5rem;      /* 520 */
+  --case-w-rbc-insight: 32.5rem;   /* 520 */
+  --case-w-rbc-pair: 31.75rem;     /* 508 */
+  --case-w-rbc-widgets: 52.75rem;  /* 844 */
+
+  /* Government of Canada case study figures, from Passport-REF.pdf at 1040. */
+  --case-fig-goc-hero: 1040 / 310;
+  --case-fig-goc-nz: 567 / 262;
+  --case-fig-goc-team: 438 / 397;
+  --case-fig-goc-style: 508 / 542;
+  --case-fig-goc-account: 1040 / 501;
+  --case-fig-goc-review: 508 / 295;
+  --case-fig-goc-model: 508 / 347;
+  --case-fig-goc-impact: 709 / 818;
+  --case-w-goc-nz: 35.4375rem;     /* 567 */
+  --case-w-goc-team: 27.375rem;    /* 438 */
+  --case-w-goc-style: 31.75rem;    /* 508 */
+  --case-w-goc-review: 31.75rem;   /* 508 */
+  --case-w-goc-model: 31.75rem;    /* 508 */
+  --case-w-goc-impact: 44.3125rem; /* 709 */
+
   /* ---- Borders ----------------------------------------------------------- */
   --radius-s: 0.25rem;   /* 4  */
   --radius-m: 0.5rem;    /* 8  */
@@ -94,6 +157,10 @@
   --radius-full: 999rem;
 
   --border-width: 1px;
+  --color-stroke: rgb(0 0 0 / 0.3); /* inside image stroke, 30% black */
+
+  /* ---- Shadow ------------------------------------------------------------ */
+  --shadow-avatar: 0 0 15px rgb(0 0 0 / 0.15);
 
   /* ---- Motion ------------------------------------------------------------
      base.css zeroes these under prefers-reduced-motion, so components do not
@@ -104,6 +171,7 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ---- Depth ------------------------------------------------------------- */
+  --z-work-gate: 50;
   --z-header: 100;
   --z-nav-panel: 200;
   --z-skip-link: 300;

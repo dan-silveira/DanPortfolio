@@ -19,10 +19,14 @@ a page refresh picks up any change.
 
 ```
 index.html               Home — the one page with a finished Figma design
-work/index.html          Work index
-work/project-one/        Case study — copy this folder for each new project
-writing/index.html       Placeholder, not designed yet
-library/index.html       Placeholder, not designed yet
+work/index.html          Work index — Recent work listing, from RecentWork-REF.pdf
+work/air-canada/         Case study — Air Canada, from AC-REF.pdf
+work/rbc-clear/          Case study — RBC Clear, from RBC-REF.pdf
+work/government-of-canada/ Case study — Government of Canada, from Passport-REF.pdf
+work/project-one/        Case study template — copy this folder for each new project
+about/index.html         About me — from About-REF.pdf, linked from the header avatar
+writing/index.html       Writing index — from Writing-REF.pdf
+library/index.html       Library — from Library-REF.pdf
 css/
   tokens.css             Design tokens: color, type, spacing, geometry
   base.css               @font-face, reset, element defaults
@@ -37,6 +41,14 @@ assets/images            Figma exports plus optimized `-SML` derivatives
 ## Design source of truth
 
 The homepage was built against `assets/images/Homepage-REF.pdf`, a 1280px Figma export.
+The Work index was built against `assets/images/RecentWork-REF.pdf`, the Writing
+index against `assets/images/Writing-REF.pdf`, About against
+`assets/images/About-REF.pdf`, and Library against
+`assets/images/Library-REF.pdf`. The Air Canada case study was built
+against `assets/images/AC-REF.pdf`, the RBC Clear case study against
+`assets/images/RBC-REF.pdf`, and the Government of Canada case study against
+`assets/images/Passport-REF.pdf`. All eight share the homepage's palette, type scale,
+32px gutter, and 8/32 spacing rhythm.
 Its palette, type scale, and geometry were read out of the PDF's vector data rather than
 eyeballed, and the exact values live in `css/tokens.css` marked with a `ref` comment:
 
@@ -66,8 +78,8 @@ what the pages reference. Regenerate with `sips`, for example:
 sips -s format jpeg -s formatOptions 82 -z 444 880 Foo-IMG.png --out Foo-IMG-SML.jpg
 ```
 
-The three 238x108 rail thumbnails stay PNG because their alpha channel carries baked-in
-rounded corners.
+The three 238x108 rail thumbnails and the 222x222 hero portrait stay PNG because their
+alpha channel carries baked-in rounded corners matching `--radius-l`.
 
 **Outstanding placeholders.** Everything still awaiting a decision or an asset is marked:
 
@@ -75,11 +87,12 @@ rounded corners.
 grep -rn "TODO" --include="*.css" --include="*.html" --include="*.js" .
 ```
 
-Currently: the hero portrait export, the five rail card destinations, a favicon, and a
-1200x630 Open Graph image.
+Currently: a favicon and a 1200x630 Open Graph image. The writing cards
+link out to the published articles.
 
 **Adding a case study.** Copy `work/project-one/` to `work/<project-slug>/`, update the
-content and `<head>` metadata, then add a card to the grid in `work/index.html`.
+content and `<head>` metadata, then add a row to `work/index.html` with an `-RW.webp`
+listing image.
 
 ## Deploying
 

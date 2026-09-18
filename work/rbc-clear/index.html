@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Royal Bank of Canada — Dan Silveira</title>
+  <meta name="description" content="Designing a new era of cash management system. UX design lead and strategist on an IBM iX engagement for RBC Clear, 2023–2024.">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Royal Bank of Canada — Dan Silveira">
+  <meta property="og:description" content="Designing a new era of cash management system.">
+  <meta property="og:image" content="/assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/pages/case-study.css">
+
+  <noscript>
+    <style>
+      [data-reveal] { opacity: 1; transform: none; }
+    </style>
+  </noscript>
+  <script>
+    try {
+      if (sessionStorage.getItem('work-unlocked') === '1') {
+        document.documentElement.classList.add('work-unlocked');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="work-gate" id="work-gate" role="dialog" aria-modal="true" aria-labelledby="work-gate-title">
+    <form class="work-gate__card" id="work-gate-form">
+      <p class="heading work-gate__title" id="work-gate-title">Enter the password to view this work.</p>
+      <label class="visually-hidden" for="work-gate-password">Password</label>
+      <input class="work-gate__input" type="password" id="work-gate-password" name="password" autocomplete="off" required>
+      <button class="button button--primary work-gate__submit" type="submit">Submit</button>
+      <p class="work-gate__error" id="work-gate-error" hidden>Incorrect password.</p>
+    </form>
+  </div>
+
+  <!-- Shared header — keep in sync across all pages -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="/">Dan Silveira</a>
+
+      <div class="site-nav-group">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bars"></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a class="site-nav__link" href="/work/">Work</a></li>
+            <li><a class="site-nav__link" href="/writing/">Writing</a></li>
+            <li><a class="site-nav__link" href="/library/">Library</a></li>
+          </ul>
+        </nav>
+
+        <a class="site-header__avatar" href="/about/">
+          <img src="/assets/images/Avatar-SML.jpg" alt="About Dan Silveira" width="26" height="26">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main" id="main">
+    <article class="case-study">
+      <div class="container">
+
+        <header class="case-hero">
+          <h1 class="display case-hero__title">Royal Bank of Canada</h1>
+          <p class="heading case-hero__lede">Designing a new era of cash management system</p>
+          <p class="case-hero__meta">UX Design Lead and Strategist · IBM iX engagement · 2023–2024</p>
+        </header>
+
+        <figure class="case-figure case-hero__media">
+          <div class="frame frame--rbc-hero">
+            <img src="/assets/images/RBCHero-SML.jpg"
+                 alt="The accounts page of the RBC Clear app, showing cumulative available DDA balance and a breakdown of ledger, credits, debits, and pending activity"
+                 width="1040" height="310" fetchpriority="high" decoding="async">
+          </div>
+          <figcaption>
+            Figure 1. The accounts page of the newly developed RBC Clear app.
+          </figcaption>
+        </figure>
+
+        <div class="case-intro case-prose">
+          <p>
+            In 2023, I joined the Royal Bank of Canada engagement as a consultant
+            leading UX design strategy for an ambitious project called RBC Clear,
+            which entailed designing and building an entirely new application
+            from the ground up.
+          </p>
+          <p>
+            The design team for this engagement was small, but when I joined,
+            they had already developed an initial design system with several
+            pages. With my technical background, I owned both the Accounts
+            section and the Developer Portal. The first focused on a suite of
+            experiences that enabled CFOs at large enterprise companies to
+            manage all their accounts in one place, while the latter provided a
+            space for CTOs and developers to access APIs for implementation into
+            their own products. Both spaces had very specific user needs with
+            little overlap between the two.
+          </p>
+          <p>
+            Within this case study, I will walk through the end-to-end process
+            we developed, as well as the journey we went on, leading to the
+            launch of the app and the awards it won as a result.
+          </p>
+        </div>
+
+        <section class="case-section" aria-labelledby="process-title">
+          <h2 class="heading case-section__title" id="process-title">Redefining the design process</h2>
+
+          <div class="case-prose">
+            <p>
+              One of the challenges the team was facing when I first joined the
+              project was a misalignment between product management and design.
+              This often meant that new requirements were only identified at the
+              approval stage rather than during discovery, forcing designs to be
+              reworked late in the process. After investigating further, I
+              identified that one of the root causes of this issue was a lack of
+              standardization in the end-to-end process from business
+              requirements to design to development, in addition to an unclear
+              understanding of how product management and design work together.
+            </p>
+            <p>
+              To alleviate the issue, increase team efficiency, and improve
+              collaboration with stakeholders, I developed a standardized
+              process that plugged into the already established service design
+              approach. This new process involved:
+            </p>
+            <br>    
+            <ol>
+              <li>
+                Workshop sessions with key stakeholders, led by designers, to
+                develop a complete product Service Design Blueprint.
+              </li>
+              <li>
+                Blueprint reviews where designers and product managers together
+                identify user tasks and add them to a task list.
+              </li>
+              <li>
+                Task mapping where the designer turns the identified tasks into
+                Task Flow Diagrams, which are then verified with stakeholders.
+              </li>
+              <li>
+                Low-fidelity designs built from the diagrams to receive approval
+                from executive leadership before creating and delivering the
+                high-fidelity designs.
+              </li>
+            </ol>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--rbc-process">
+              <img src="/assets/images/RBCProcess-SML.jpg"
+                   alt="End-to-end design process timeline covering strategic design, executional design, and QA, from discovery through to code live"
+                   width="1040" height="384" loading="lazy" decoding="async">
+            </div>
+            <figcaption>Figure 2. The new end-to-end design process</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section" aria-labelledby="taskflow-title">
+          <h2 class="heading case-section__title" id="taskflow-title">Task Flow and low-fidelity development</h2>
+
+          <div class="case-prose">
+            <p>
+              Developing a task flow template and standardization process was
+              imperative to correcting these challenges. The task flows made it
+              easy for stakeholders both familiar and unfamiliar with the
+              workstream to understand the intent of the design while making it
+              quick and simple to rework in real time. The task flows were used
+              through all levels of approval before moving into low-fidelity
+              design development. Below is a shortened example of what a task
+              flow looked like, in addition to its individual components.
+            </p>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--rbc-taskflow">
+              <img src="/assets/images/RBCTaskFlow-SML.jpg"
+                   alt="Task flow diagram kit with a legend of value streams, user actions, and decision points, plus an example flow for creating a virtual account"
+                   width="1040" height="538" loading="lazy" decoding="async">
+            </div>
+            <figcaption>Figure 3. Task flow diagram kit.</figcaption>
+          </figure>
+
+          <div class="case-split case-split--rbc-lofi media-split media-split--reverse">
+            <div class="media-split__figure">
+              <figure class="case-figure case-figure--flush">
+                <div class="frame frame--rbc-lofi">
+                  <img src="/assets/images/RBCLofi-SML.jpg"
+                       alt="Low-fidelity Accounts wireframe with placeholder insight cards and a create-a-virtual-account dropdown"
+                       width="520" height="410" loading="lazy" decoding="async">
+                </div>
+                <figcaption>Figure 4. Low fidelity design system.</figcaption>
+              </figure>
+            </div>
+            <div class="media-split__body case-prose">
+              <p>
+                Following the approval of a task flow, designers would then work
+                on the low-fidelity screens using the lo-fi design system I built
+                to simplify their design process. The goal was to focus the
+                conversation on the specific parts of the design that needed
+                attention and make the experience the centrepiece of the
+                prototypes. This equipped designers to get feedback on the areas
+                that were important for the experience.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-section" aria-labelledby="viz-title">
+          <h2 class="heading case-section__title" id="viz-title">Data visualization standardization</h2>
+
+          <div class="case-prose">
+            <p>
+              User testing surfaced a need for data visualization throughout key
+              areas of the platform once the screens began to mature into their
+              high-fidelity designs. To address this, we needed to develop a
+              concept and standardized process, which led to the development of
+              the Insight Card. Unlike the Data Widgets, which we proposed for
+              future designs, Insight Cards are minimalist in nature, only
+              providing the user with three key pieces of information: the title,
+              the display area, and actionable recommendations.
+            </p>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--rbc-insight">
+              <img src="/assets/images/RBCInsight-SML.jpg"
+                   alt="Insight Card anatomy showing title, display area, and actionable recommendations, with three layout examples"
+                   width="520" height="348" loading="lazy" decoding="async">
+            </div>
+            <figcaption>Figure 5. Insight Card structure.</figcaption>
+          </figure>
+
+          <div class="case-prose">
+            <p>
+              By limiting the Insight Cards to select details that were
+              important to the user, we were able to easily incorporate them
+              into all our main section pages with minimal impact on the
+              existing layout designs. We also provided users with the ability
+              to hide the entire insight section if they weren't currently
+              using it.
+            </p>
+          </div>
+
+          <div class="case-pair case-pair--rbc">
+            <figure>
+              <div class="frame frame--rbc-stakeholder">
+                <img src="/assets/images/RBCStakeholder-SML.jpg"
+                     alt="Annotated low-fidelity hub-page diagram labeling the page title, insight section, table tabs, data table, and actions"
+                     width="508" height="435" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Figure 6. Low fidelity diagram for stakeholder alignment.</figcaption>
+            </figure>
+            <figure>
+              <div class="frame frame--rbc-cards">
+                <img src="/assets/images/RBCCards-SML.jpg"
+                     alt="High-fidelity Accounts page with four insight cards summarizing balances, credits, debits, and account-opening approvals"
+                     width="508" height="435" loading="lazy" decoding="async">
+              </div>
+              <figcaption>Figure 7. High fidelity implementation of the insight cards.</figcaption>
+            </figure>
+          </div>
+
+          <div class="case-prose">
+            <p>
+              Below is an example with test data that we used to demonstrate
+              the capabilities of the insight cards. This current design is the
+              MVP version as we planned to later on introduce visualizations
+              like miniature bar charts, line graphs, etc.
+            </p>
+            <p>
+              In addition to the Insight Cards, I developed the guidelines and
+              concept designs for a future-looking implementation of Data
+              Widgets. These widgets serve a different purpose than the Insight
+              Cards, as they are meant to provide the user with a lot more
+              information while giving them the ability to manipulate how the
+              data is shown to match their needs. Unfortunately, due to
+              development feasibility constraints at the time, the widgets were
+              deferred until after launch, which was when I was assigned to a
+              new client project. Below you can see a brief concept draft that
+              was created during the exploration phase.
+            </p>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--rbc-widgets">
+              <img src="/assets/images/RBCWidgets-SML.jpg"
+                   alt="Accounts page concept with a Summary of Accounts line chart and a DDA Health stacked bar chart above the accounts table"
+                   width="844" height="709" loading="lazy" decoding="async">
+            </div>
+            <figcaption>
+              Figure 8. The Data Widgets designed for the primary accounts page.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section" aria-labelledby="impact-title">
+          <h2 class="heading case-section__title" id="impact-title">Impact</h2>
+
+          <div class="case-prose">
+            <p>
+              Overall, the RBC Clear project was a success for our client and
+              our design team. The new cash management system won eight awards
+              from The Digital Banker, Global Finance, and Infosys Finacle,
+              including two Digital CX Awards for the platform's outstanding
+              customer experience, and was recognized by Celent as a pioneer of
+              next-generation banking architecture. Although the project ran
+              into challenges at the beginning, by leveraging our collective
+              skills and my standardized design processes, we were able to
+              persevere and ultimately lead the product team in building an
+              experience that customers find valuable for their businesses.
+            </p>
+          </div>
+
+          <figure class="case-figure">
+            <div class="frame frame--rbc-awards">
+              <img src="/assets/images/RBCAwards-SML.jpg"
+                   alt="Eight award marks for RBC Clear, including two Digital CX Awards, Global Finance, Celent, and Infosys Finacle"
+                   width="1040" height="214" loading="lazy" decoding="async">
+            </div>
+            <figcaption>
+              Figure 9. The RBC Clear app won eight awards including two Digital
+              CX Awards for the platform's outstanding customer experience.
+            </figcaption>
+          </figure>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- Shared footer — keep in sync across all pages -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <ul class="site-footer__links">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/library/">Library</a></li>
+      </ul>
+      <p class="site-footer__meta">&copy; 2026 Dan Silveira</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

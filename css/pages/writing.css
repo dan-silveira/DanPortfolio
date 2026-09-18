@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Page: Writing index
+   Listing from assets/images/Writing-REF.pdf. Content sits in a 742px band.
+   Each row is 742×200: a 200×200 image, a 32px gap, and a text column.
+   ========================================================================== */
+
+.writing-intro {
+  max-width: var(--writing-measure);
+  margin-inline: auto;
+  padding-top: calc(var(--space-l) + var(--space-2xs));
+}
+
+.writing-intro__title {
+  margin-bottom: var(--space-xl);
+}
+
+.writing-list {
+  width: 100%;
+  max-width: var(--writing-measure);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--space-l) + var(--border-width));
+}
+
+.writing-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-l);
+  align-items: start;
+  background-color: var(--color-bg);
+}
+
+.writing-entry:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: var(--space-l);
+  height: var(--border-width);
+  background-color: var(--color-work-rule);
+}
+
+.writing-entry__media {
+  position: relative;
+  width: var(--writing-thumb);
+  max-width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-m);
+}
+
+/* 1px inside stroke, #000 at 30% — same treatment as .frame. */
+.writing-entry__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: var(--border-width) solid var(--color-stroke);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.writing-entry__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.writing-entry__body-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.writing-entry__title {
+  margin-bottom: var(--space-l);
+  flex-shrink: 0;
+}
+
+.writing-entry__body,
+.writing-entry__link {
+  font-size: var(--step-0);
+}
+
+.writing-entry__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  margin-bottom: var(--space-m);
+}
+
+.writing-entry__link {
+  display: inline-block;
+  flex-shrink: 0;
+  text-decoration: underline;
+}
+
+@media (width >= 48rem) {
+  .writing-entry {
+    width: var(--writing-measure);
+    height: var(--writing-row-h);
+    grid-template-columns: var(--writing-thumb) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .writing-entry__media {
+    width: var(--writing-thumb);
+    height: var(--writing-row-h);
+  }
+
+  .writing-entry__body-col {
+    height: 100%;
+  }
+}

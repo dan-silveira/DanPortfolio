@@ -1,0 +1,69 @@
+/* ==========================================================================
+   Page: About
+   Listing from assets/images/About-REF.pdf. Content sits in an 883px band.
+   One row: 510px copy, a 32px gap, and a 341×360 portrait.
+   ========================================================================== */
+
+.about-intro {
+  max-width: var(--about-measure);
+  margin-inline: auto;
+  padding-top: calc(var(--space-l) + var(--space-2xs));
+}
+
+.about-intro__title {
+  margin-bottom: var(--space-l);
+}
+
+.about-layout {
+  width: 100%;
+  max-width: var(--about-measure);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-l);
+  align-items: start;
+}
+
+.about-copy p + p {
+  margin-top: 1lh;
+}
+
+.about-photo {
+  position: relative;
+  width: var(--about-photo-w);
+  max-width: 100%;
+  aspect-ratio: 341 / 360;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+}
+
+/* 1px inside stroke, #000 at 30% — same treatment as .frame. */
+.about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: var(--border-width) solid var(--color-stroke);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (width >= 48rem) {
+  .about-layout {
+    width: var(--about-measure);
+    grid-template-columns: minmax(0, 1fr) var(--about-photo-w);
+  }
+
+  .about-photo {
+    width: var(--about-photo-w);
+    height: var(--about-photo-h);
+    max-width: none;
+  }
+}

@@ -1,7 +1,8 @@
 /* ==========================================================================
    Page: Home
-   Spacing below is derived from the Figma export's measured coordinates.
-   The comments record the source measurement so the intent survives edits.
+   The main column runs on a 32px vertical rhythm, tightening to 8px between
+   a title and the copy beneath it. Widths and figure geometry still come
+   from the Figma export; the comments record those source measurements.
    ========================================================================== */
 
 /* ---- Hero ---------------------------------------------------------------
@@ -25,27 +26,25 @@
 }
 
 .hero__name {
-  margin-bottom: var(--space-3xs);
+  margin-bottom: var(--space-2xs);
 }
 
 .hero__role {
   margin-bottom: var(--space-2xs);
 }
 
-/* ---- How I see design ---------------------------------------------------
-   Section heading begins at y=366, 56px below the portrait's lower edge. */
+/* ---- How I see design --------------------------------------------------- */
 
 .lenses {
-  padding-top: var(--space-xl);
+  padding-top: var(--space-l);
 }
 
 .lenses__title {
   margin-bottom: var(--space-2xs);
 }
 
-/* 36px, which lands the first figure's top edge at y=449 as in the reference. */
 .lenses__intro {
-  margin-bottom: calc(var(--space-m) + var(--space-xs));
+  margin-bottom: var(--space-l);
 }
 
 /* Rows repeat on a 254px pitch: a 222px figure plus a 32px gap. */

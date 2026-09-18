@@ -29,9 +29,26 @@
       [data-reveal] { opacity: 1; transform: none; }
     </style>
   </noscript>
+  <script>
+    try {
+      if (sessionStorage.getItem('work-unlocked') === '1') {
+        document.documentElement.classList.add('work-unlocked');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="work-gate" id="work-gate" role="dialog" aria-modal="true" aria-labelledby="work-gate-title">
+    <form class="work-gate__card" id="work-gate-form">
+      <p class="heading work-gate__title" id="work-gate-title">Enter the password to view this work.</p>
+      <label class="visually-hidden" for="work-gate-password">Password</label>
+      <input class="work-gate__input" type="password" id="work-gate-password" name="password" autocomplete="off" required>
+      <button class="button button--primary work-gate__submit" type="submit">Submit</button>
+      <p class="work-gate__error" id="work-gate-error" hidden>Incorrect password.</p>
+    </form>
+  </div>
 
   <!-- Shared header — keep in sync across all pages -->
   <header class="site-header">
@@ -52,9 +69,9 @@
           </ul>
         </nav>
 
-        <span class="site-header__avatar">
-          <img src="/assets/images/Avatar-SML.jpg" alt="" width="26" height="26">
-        </span>
+        <a class="site-header__avatar" href="/about/">
+          <img src="/assets/images/Avatar-SML.jpg" alt="About Dan Silveira" width="26" height="26">
+        </a>
       </div>
     </div>
   </header>
@@ -62,55 +79,86 @@
   <main class="site-main" id="main">
     <div class="container">
 
-      <section class="work-intro">
-        <h1 class="display work-intro__title">Work</h1>
-        <p class="work-intro__lede">
-          Selected case studies from consulting and product design practice.
-        </p>
-      </section>
+      <header class="work-intro">
+        <h1 class="display work-intro__title">Recent work</h1>
+      </header>
 
-      <!-- Project grid. --grid-min sets the width at which cards wrap.
-           Add one <article> per case study.
-           TODO: no Figma design for this page yet; the cards below use the
-           homepage's visual language as a stand-in. -->
-      <section class="section" aria-label="All projects">
-        <div class="grid work-grid" style="--grid-min: 26rem;">
+      <section class="work-list" aria-label="All projects">
 
-          <article class="project-card" data-reveal>
-            <div class="project-card__media frame frame--figure">
-              <img src="/assets/images/AirCanada-IMG.png"
-                   alt="Screenshot of the Air Canada reporting interface"
-                   width="440" height="222" loading="lazy" decoding="async">
-            </div>
-            <div class="stack stack--2xs">
-              <h2 class="project-card__title">
-                <a class="project-card__link" href="/work/project-one/">Design Leadership</a>
-              </h2>
-              <p class="project-card__summary">
-                Learn about the work I did at Air Canada as an IBM Product Design
-                Consultant.
-              </p>
-            </div>
-          </article>
+        <article class="work-entry" data-reveal>
+          <div class="work-entry__media">
+            <img src="/assets/images/AC-RW.webp"
+                 alt="Air Canada booking interface shown in a laptop frame"
+                 width="341" height="292" decoding="async">
+          </div>
+          <div class="work-entry__body-col">
+            <h2 class="heading work-entry__title">Design Practice Transformation | 2025</h2>
+            <p class="work-entry__sector">Sector: Airline</p>
+            <p class="work-entry__tags">Leadership | Coaching | DesignOps</p>
+            <p class="work-entry__body">
+              Air Canada aimed to release new end-to-end features while
+              improving existing experiences to be more scalable and resilient.
+              As design lead and coach for the Book, Shop, and Manage
+              experiences, I led the delivery of new features while advising
+              user research projects. I strengthened the design practice by
+              developing key processes and standardizations that improved team
+              efficiency, and led a coaching initiative with bi-weekly sessions
+              to professionally develop the designers on the team.
+            </p>
+            <a class="work-entry__link" href="/work/air-canada/">Read case study →</a>
+          </div>
+        </article>
 
-          <article class="project-card" data-reveal>
-            <div class="project-card__media frame frame--figure">
-              <img src="/assets/images/CashManagement-IMG.png"
-                   alt="Screenshot of a cash management dashboard with charts"
-                   width="440" height="222" loading="lazy" decoding="async">
-            </div>
-            <div class="stack stack--2xs">
-              <h2 class="project-card__title">
-                <a class="project-card__link" href="/work/project-one/">Cash Management System</a>
-              </h2>
-              <p class="project-card__summary">
-                Learn about the work I did at Air Canada as an IBM Product Design
-                Consultant.
-              </p>
-            </div>
-          </article>
+        <article class="work-entry" data-reveal>
+          <div class="work-entry__media">
+            <img src="/assets/images/RBC-RW.webp"
+                 alt="RBC Clear cash management dashboard shown in a laptop frame"
+                 width="341" height="292" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body-col">
+            <h2 class="heading work-entry__title">Cash Management System | 2024</h2>
+            <p class="work-entry__sector">Sector: Financial Services/Banking</p>
+            <p class="work-entry__tags">Leadership | DesignOps | Prototyping</p>
+            <p class="work-entry__body">
+              Royal Bank of Canada set out to build a cash management system
+              from the ground up. As UX Design Lead and Strategist, I guided
+              multiple key workstreams, designing complex experiences for both
+              end users and developers. I led the development of service design
+              blueprints for my workstream areas, contributed to building the
+              design system, and implemented new scalable processes within the
+              design practice. The resulting application, RBC Clear, went on to
+              win eight awards after launch, including two for outstanding
+              customer experience.
+            </p>
+            <a class="work-entry__link" href="/work/rbc-clear/">Read case study →</a>
+          </div>
+        </article>
 
-        </div>
+        <article class="work-entry" data-reveal>
+          <div class="work-entry__media">
+            <img src="/assets/images/GOC-RW.webp"
+                 alt="Government of Canada passport renewal application shown in a laptop frame"
+                 width="341" height="292" loading="lazy" decoding="async">
+          </div>
+          <div class="work-entry__body-col">
+            <h2 class="heading work-entry__title">Digital Passport Application | 2023</h2>
+            <p class="work-entry__sector">Sector: Government</p>
+            <p class="work-entry__tags">Leadership | Design System | Prototyping</p>
+            <p class="work-entry__body">
+              The Government of Canada developed an entirely digital passport
+              renewal experience as application volumes increased year over year
+              and impacted wait times at service centres. As design lead and AI
+              specialist, I delivered the design system and designed the
+              end-to-end renewal platform, including leading the design of the
+              AI-powered computer vision tool that evaluates passport photos in
+              real time. The digital application enabled citizens to renew
+              passports from home while reducing pressure on physical service
+              centres.
+            </p>
+            <a class="work-entry__link" href="/work/government-of-canada/">Read case study →</a>
+          </div>
+        </article>
+
       </section>
 
     </div>

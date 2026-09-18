@@ -56,9 +56,9 @@
           </ul>
         </nav>
 
-        <span class="site-header__avatar">
-          <img src="/assets/images/Avatar-SML.jpg" alt="" width="26" height="26">
-        </span>
+        <a class="site-header__avatar" href="/about/">
+          <img src="/assets/images/Avatar-SML.jpg" alt="About Dan Silveira" width="26" height="26">
+        </a>
       </div>
     </div>
   </header>
@@ -72,8 +72,9 @@
         <!-- Hero -->
         <section class="hero media-split" style="--split-figure: var(--portrait-size);">
           <div class="hero__figure frame frame--portrait">
-            <!-- Portrait not supplied yet; the frame holds its 222x222 slot so
-                 dropping the export in later will not shift the layout. -->
+            <img src="/assets/images/Avatar.jpg"
+                 alt="Dan Silveira"
+                 width="222" height="222" fetchpriority="high" decoding="async">
           </div>
 
           <div class="hero__body media-split__body">
@@ -206,14 +207,15 @@
           <div class="rail__group">
 
             <article class="rail-card">
-              <h3 class="rail-card__title">
-                <a class="rail-card__link" href="/work/">Design Leadership</a>
-                <!-- TODO: confirm destination -->
-              </h3>
-              <div class="rail-card__media frame frame--thumb">
-                <img src="/assets/images/AirCanada-IMG.png"
-                     alt="Screenshot of the Air Canada reporting interface"
-                     width="238" height="108" loading="lazy" decoding="async">
+              <div class="rail-card__head">
+                <h3 class="rail-card__title">
+                  <a class="rail-card__link" href="/work/air-canada/">Design Practice Transformation</a>
+                </h3>
+                <div class="rail-card__media frame frame--thumb">
+                  <img src="/assets/images/AirCanada-IMG.png"
+                       alt="Screenshot of the Air Canada reporting interface"
+                       width="238" height="108" loading="lazy" decoding="async">
+                </div>
               </div>
               <p class="rail-card__summary">
                 Learn about the work I did at Air Canada as an IBM Product Design
@@ -222,18 +224,19 @@
             </article>
 
             <article class="rail-card">
-              <h3 class="rail-card__title">
-                <a class="rail-card__link" href="/work/">Cash Management System</a>
-                <!-- TODO: confirm destination -->
-              </h3>
-              <div class="rail-card__media frame frame--thumb">
-                <img src="/assets/images/CashManagement-IMG.png"
-                     alt="Screenshot of a cash management dashboard with charts"
-                     width="238" height="108" loading="lazy" decoding="async">
+              <div class="rail-card__head">
+                <h3 class="rail-card__title">
+                  <a class="rail-card__link" href="/work/rbc-clear/">Cash Management System</a>
+                </h3>
+                <div class="rail-card__media frame frame--thumb">
+                  <img src="/assets/images/CashManagement-IMG.png"
+                       alt="Screenshot of a cash management dashboard with charts"
+                       width="238" height="108" loading="lazy" decoding="async">
+                </div>
               </div>
               <p class="rail-card__summary">
-                Learn about the work I did at Air Canada as an IBM Product Design
-                Consultant.
+                Leading UX design strategy for RBC Clear, a new cash management
+                platform.
               </p>
             </article>
 
@@ -247,14 +250,16 @@
           <div class="rail__group">
 
             <article class="rail-card">
-              <h3 class="rail-card__title">
-                <a class="rail-card__link" href="/writing/">Trends Report 2026</a>
-                <!-- TODO: confirm destination -->
-              </h3>
-              <div class="rail-card__media frame frame--thumb">
-                <img src="/assets/images/TrendsReport-SML.jpg"
-                     alt="Printed trends report open on a dark surface"
-                     width="238" height="108" loading="lazy" decoding="async">
+              <div class="rail-card__head">
+                <h3 class="rail-card__title">
+                  <a class="rail-card__link" href="https://foresightguild.gumroad.com/l/trendsreport2026"
+                     target="_blank" rel="noopener noreferrer">Trends Report 2026<span class="visually-hidden"> (opens in a new tab)</span></a>
+                </h3>
+                <div class="rail-card__media frame frame--thumb">
+                  <img src="/assets/images/TrendsReport-SML.jpg"
+                       alt="Printed trends report open on a dark surface"
+                       width="238" height="108" loading="lazy" decoding="async">
+                </div>
               </div>
               <p class="rail-card__summary">
                 Read the latest trends report I researched and wrote using strategic
@@ -263,14 +268,16 @@
             </article>
 
             <article class="rail-card">
-              <h3 class="rail-card__title">
-                <a class="rail-card__link" href="/writing/">The Design-Knowledge Framework</a>
-                <!-- TODO: confirm destination -->
-              </h3>
-              <div class="rail-card__media frame frame--thumb">
-                <img src="/assets/images/TheDesign-Knowledge-SML.jpg"
-                     alt="White jigsaw puzzle with one piece missing"
-                     width="238" height="108" loading="lazy" decoding="async">
+              <div class="rail-card__head">
+                <h3 class="rail-card__title">
+                  <a class="rail-card__link" href="https://substack.com/home/post/p-180406408"
+                     target="_blank" rel="noopener noreferrer">The Design-Knowledge Framework<span class="visually-hidden"> (opens in a new tab)</span></a>
+                </h3>
+                <div class="rail-card__media frame frame--thumb">
+                  <img src="/assets/images/TheDesign-Knowledge-SML.jpg"
+                       alt="White jigsaw puzzle with one piece missing"
+                       width="238" height="108" loading="lazy" decoding="async">
+                </div>
               </div>
               <p class="rail-card__summary">
                 An investigation of the limits of AI generation in Design and the
@@ -281,14 +288,16 @@
             </article>
 
             <article class="rail-card">
-              <h3 class="rail-card__title">
-                <a class="rail-card__link" href="/writing/">The Fog of Now</a>
-                <!-- TODO: confirm destination -->
-              </h3>
-              <div class="rail-card__media frame frame--thumb">
-                <img src="/assets/images/TheFogofNow-IMG.png"
-                     alt="Fog obscuring the horizon over open water"
-                     width="238" height="108" loading="lazy" decoding="async">
+              <div class="rail-card__head">
+                <h3 class="rail-card__title">
+                  <a class="rail-card__link" href="https://substack.com/home/post/p-161490553"
+                     target="_blank" rel="noopener noreferrer">The Fog of Now<span class="visually-hidden"> (opens in a new tab)</span></a>
+                </h3>
+                <div class="rail-card__media frame frame--thumb">
+                  <img src="/assets/images/TheFogofNow-IMG.png"
+                       alt="Fog obscuring the horizon over open water"
+                       width="238" height="108" loading="lazy" decoding="async">
+                </div>
               </div>
               <p class="rail-card__summary">
                 Explore how organizations become so fixated on present-day customer

@@ -241,6 +241,17 @@ body {
   border-radius: var(--radius-l);
 }
 
+/* 1px inside stroke, #000 at 30% — Figma stroke Position: Inside. */
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: var(--border-width) solid var(--color-stroke);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 .frame > img,
 .frame > video {
   width: 100%;

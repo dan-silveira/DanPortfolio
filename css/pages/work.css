@@ -1,23 +1,118 @@
 /* ==========================================================================
    Page: Work index
-   No Figma design for this page yet; it borrows the homepage's type and
-   spacing so the two do not look like different sites.
+   Listing from assets/images/RecentWork-REF.pdf. Content sits in an 883px
+   band. Each row is 883×292: a 341×292 image, a 32px gap, and a text column.
    ========================================================================== */
 
 .work-intro {
-  padding-top: var(--space-l);
+  max-width: var(--work-measure);
+  margin-inline: auto;
+  padding-top: calc(var(--space-l) + var(--space-2xs));
 }
 
 .work-intro__title {
-  margin-bottom: var(--space-2xs);
+  margin-bottom: var(--space-xl);
 }
 
-.work-intro__lede {
-  max-width: 52ch;
+.work-list {
+  width: 100%;
+  max-width: var(--work-measure);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--space-l) + var(--border-width));
 }
 
-/* Row gap is wider than the column gap so stacked cards read as separate
-   projects rather than one continuous block. */
-.work-grid {
-  row-gap: var(--space-2xl);
+.work-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-l);
+  align-items: start;
+  background-color: var(--color-bg);
+}
+
+.work-entry:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: var(--space-l);
+  height: var(--border-width);
+  background-color: var(--color-work-rule);
+}
+
+.work-entry__media {
+  width: 100%;
+  max-width: var(--work-thumb-w);
+  aspect-ratio: var(--work-thumb);
+  overflow: hidden;
+  border-radius: var(--radius-l);
+}
+
+.work-entry__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.work-entry__body-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.work-entry__title {
+  margin-bottom: var(--space-m);
+  flex-shrink: 0;
+}
+
+.work-entry__sector,
+.work-entry__tags,
+.work-entry__body,
+.work-entry__link {
+  font-size: var(--step-0);
+}
+
+.work-entry__sector,
+.work-entry__tags {
+  flex-shrink: 0;
+}
+
+.work-entry__tags {
+  font-weight: var(--weight-semibold);
+}
+
+.work-entry__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  margin-top: 1lh;
+  margin-bottom: var(--space-m);
+}
+
+.work-entry__link {
+  display: inline-block;
+  flex-shrink: 0;
+  text-decoration: underline;
+}
+
+@media (width >= 48rem) {
+  .work-entry {
+    width: var(--work-measure);
+    height: var(--work-row-h);
+    grid-template-columns: var(--work-thumb-w) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .work-entry__media {
+    max-width: none;
+    height: var(--work-row-h);
+  }
+
+  .work-entry__body-col {
+    height: 100%;
+  }
 }

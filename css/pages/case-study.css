@@ -1,142 +1,318 @@
 /* ==========================================================================
    Page: Case study
+   Long-form narrative matching assets/images/AC-REF.pdf. Content sits in a
+   1040px column (the figure widths in the reference). Vertical rhythm is
+   the same 32px as the homepage, tightening to 8px between a title and the
+   copy beneath it.
    ========================================================================== */
+
+.case-study {
+  padding-top: var(--space-l);
+  padding-bottom: var(--space-2xl);
+}
+
+.case-study .container {
+  max-width: calc(var(--case-measure) + 2 * var(--gutter));
+}
 
 /* ---- Hero --------------------------------------------------------------- */
 
-.case-hero {
-  padding-top: var(--space-l);
-}
-
-.case-hero__back {
-  margin-bottom: var(--space-l);
-}
-
-/* Back link with a leading arrow that nudges on hover. */
-.link-back {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3xs);
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-  font-weight: var(--weight-medium);
-  text-decoration: none;
-}
-
-.link-back::before {
-  content: "\2190"; /* ← */
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.link-back:hover::before {
-  transform: translateX(-0.25rem);
-}
-
 .case-hero__title {
-  max-width: 20ch;
-  font-size: var(--step-5);
-  margin-bottom: var(--space-m);
+  margin-bottom: var(--space-2xs);
 }
 
 .case-hero__lede {
-  max-width: 54ch;
+  margin-bottom: var(--space-2xs);
+}
+
+.case-hero__meta {
   color: var(--color-ink-muted);
-  font-size: var(--step-1);
-  line-height: var(--leading-snug);
+  font-size: var(--step--1);
 }
 
 .case-hero__media {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-l);
 }
 
-/* ---- Body sections ------------------------------------------------------ */
+/* ---- Intro -------------------------------------------------------------- */
+
+.case-intro {
+  margin-top: var(--space-l);
+}
+
+/* ---- Sections ----------------------------------------------------------- */
+
+.case-section {
+  margin-top: var(--space-l);
+}
 
 .case-section__title {
-  font-size: var(--step-2);
-  padding-bottom: var(--space-xs);
-  margin-bottom: var(--space-m);
-  border-bottom: var(--border-width) solid var(--color-line);
+  margin-bottom: var(--space-2xs);
 }
 
-/* Long-form reading column. Slightly narrower than the default measure
-   because case study prose is dense. */
-.prose {
-  max-width: 62ch;
+.case-prose p + p {
+  margin-top: 1lh;
 }
 
-.prose p {
-  max-width: none; /* the container sets the measure, not each paragraph */
+.case-prose p + ol,
+.case-prose p + ul {
+  margin-top: 1lh;
 }
+
+.case-prose li + li {
+  margin-top: 0.35em;
+}
+
+.case-prose + .case-prose {
+  margin-top: 1lh;
+}
+
+/* ---- Figures ------------------------------------------------------------ */
 
 .case-figure {
   margin-top: var(--space-l);
 }
 
-/* ---- Outcome metrics ---------------------------------------------------- */
-
-.metrics {
-  display: grid;
-  gap: var(--space-m);
-  grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
-  margin: var(--space-l) 0 0;
-  padding: var(--space-m) 0 0;
-  border-top: var(--border-width) solid var(--color-line);
+.case-figure--flush {
+  margin-top: 0;
 }
 
-/* DM Serif Display ships Regular only; asking for a heavier weight would
-   make the browser synthesize a faux bold. */
-.metric__value {
-  display: block;
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--step-4);
-  font-weight: var(--weight-regular);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-normal);
+.case-split {
+  margin-top: 0;
 }
 
-.metric__label {
-  order: 2; /* label reads beneath the number */
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
+.case-prose + .case-split,
+.case-figure + .case-split,
+.case-split + .case-split {
+  margin-top: var(--space-l);
 }
 
-.metric {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3xs);
+.case-split + .case-prose {
+  margin-top: 1lh;
 }
 
-/* ---- Metadata rail ------------------------------------------------------ */
-
-.case-meta__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-s);
-  margin: 0;
-  padding-top: var(--space-s);
-  border-top: var(--border-width) solid var(--color-line);
+.case-figure + .case-prose {
+  margin-top: var(--space-l);
 }
 
-.case-meta__label {
-  color: var(--color-ink-muted);
-  font-size: var(--step--1);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
+/* Case-study splits float the figure right so copy sits beside it, then
+   continues full-measure underneath. Homepage .media-split stays a grid. */
+.case-split.media-split {
+  display: flow-root;
+  --split-figure: var(--case-w-trip);
 }
 
-.case-meta__value {
-  margin: var(--space-3xs) 0 0;
+.case-split .media-split__figure {
+  float: right;
+  width: var(--split-figure);
+  max-width: 100%;
+  margin: 0 0 var(--space-l) var(--space-l);
 }
 
-/* ---- Next project ------------------------------------------------------- */
+.case-split--coaching.media-split {
+  --split-figure: var(--case-w-coaching);
+}
 
-.case-next__title {
-  max-width: none;
-  font-family: var(--font-display);
-  font-size: var(--step-3);
-  font-weight: var(--weight-regular);
-  letter-spacing: var(--tracking-normal);
+.case-split--coaching .media-split__figure {
+  margin: 0 0 var(--space-2xs) var(--space-2xs);
+}
+
+.case-split--coaching figcaption {
   margin-top: var(--space-2xs);
+}
+
+.case-split--club.media-split {
+  --split-figure: var(--case-w-club);
+}
+
+.case-split--rbc-lofi.media-split {
+  --split-figure: var(--case-w-rbc-lofi);
+}
+
+.case-split--rbc-lofi .media-split__figure {
+  margin: 0 0 var(--space-l) var(--space-m);
+}
+
+.frame--ac-hero { aspect-ratio: var(--case-hero); }
+.frame--ac-trip { aspect-ratio: var(--case-fig-trip); }
+
+/* Cover the 438×262 slot; pin to the top so the original trip view is not cropped. */
+.frame--ac-trip > img {
+  object-fit: cover;
+  object-position: top;
+}
+.frame--ac-compass { aspect-ratio: var(--case-fig-compass); }
+.frame--ac-drawer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--border-width);
+  aspect-ratio: var(--case-fig-drawer);
+  background-color: var(--color-stroke);
+}
+
+.frame--ac-drawer > img {
+  object-fit: cover;
+  object-position: top;
+  min-width: 0;
+  min-height: 0;
+}
+.frame--ac-coaching { aspect-ratio: var(--case-fig-coaching); }
+.frame--ac-club { aspect-ratio: var(--case-fig-club); }
+.frame--ac-workbook { aspect-ratio: var(--case-fig-workbook); }
+.frame--ac-event { aspect-ratio: var(--case-fig-event); }
+
+/* Diagrams are wider or taller than their slots; contain keeps the boards
+   readable instead of cropping them. */
+.frame--ac-workbook > img {
+  object-fit: contain;
+}
+
+/* Fill the frame height and pin left so overflow is cropped on the right. */
+.frame--ac-club-solo > img,
+.frame--ac-event > img {
+  object-fit: cover;
+  object-position: left center;
+}
+
+/* Brainstorming figure is 504 wide, not full-bleed. */
+.frame--ac-club-solo {
+  aspect-ratio: var(--case-fig-club);
+  max-width: var(--case-w-club);
+}
+
+/* Workbook 378 + 32 gap + event 630 = 1040. */
+.case-pair {
+  display: grid;
+  gap: var(--space-l);
+  grid-template-columns: 1fr;
+  margin-top: var(--space-l);
+}
+
+.case-pair--rbc {
+  gap: var(--space-m);
+}
+
+.case-pair--rbc + .case-prose {
+  margin-top: var(--space-m);
+}
+
+@media (width >= 48rem) {
+  .case-pair {
+    grid-template-columns: var(--case-w-workbook) var(--case-w-event);
+    align-items: start;
+  }
+
+  .case-pair--rbc {
+    gap: var(--space-m);
+    grid-template-columns: var(--case-w-rbc-pair) var(--case-w-rbc-pair);
+  }
+}
+
+.frame--rbc-hero { aspect-ratio: var(--case-fig-rbc-hero); }
+.frame--rbc-process {
+  aspect-ratio: var(--case-fig-rbc-process);
+  background-color: var(--color-white);
+}
+.frame--rbc-taskflow { aspect-ratio: var(--case-fig-rbc-taskflow); }
+.frame--rbc-lofi { aspect-ratio: var(--case-fig-rbc-lofi); }
+.frame--rbc-insight {
+  aspect-ratio: var(--case-fig-rbc-insight);
+  max-width: var(--case-w-rbc-insight);
+  margin-inline: auto;
+  background-color: var(--color-board);
+}
+.frame--rbc-stakeholder {
+  aspect-ratio: var(--case-fig-rbc-stakeholder);
+  background-color: var(--color-board);
+}
+.frame--rbc-cards { aspect-ratio: var(--case-fig-rbc-cards); }
+.frame--rbc-widgets {
+  aspect-ratio: var(--case-fig-rbc-widgets);
+  max-width: var(--case-w-rbc-widgets);
+  margin-inline: auto;
+}
+.frame--rbc-awards { aspect-ratio: var(--case-fig-rbc-awards); }
+
+.frame--rbc-hero > img {
+  object-position: top;
+}
+
+.frame--rbc-lofi > img {
+  object-position: top;
+}
+
+/* Diagrams are wider than their slots; contain keeps labels readable. */
+.frame--rbc-process > img,
+.frame--rbc-taskflow > img,
+.frame--rbc-insight > img,
+.frame--rbc-stakeholder > img {
+  object-fit: contain;
+}
+
+[class*="frame--rbc"] + figcaption,
+.case-pair--rbc figcaption {
+  margin-top: var(--space-2xs);
+  text-align: left;
+}
+
+.case-figure:has(.frame--rbc-insight) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.case-figure:has(.frame--rbc-insight) figcaption {
+  width: var(--case-w-rbc-insight);
+}
+
+.case-figure:has(.frame--rbc-widgets) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.case-figure:has(.frame--rbc-widgets) figcaption {
+  width: var(--case-w-rbc-widgets);
+}
+
+.case-split--goc-nz.media-split { --split-figure: var(--case-w-goc-nz); }
+.case-split--goc-team.media-split { --split-figure: var(--case-w-goc-team); }
+.case-split--goc-style.media-split { --split-figure: var(--case-w-goc-style); }
+.case-split--goc-review.media-split { --split-figure: var(--case-w-goc-review); }
+.case-split--goc-model.media-split { --split-figure: var(--case-w-goc-model); }
+.case-split--goc-impact.media-split { --split-figure: var(--case-w-goc-impact); }
+
+.case-split--goc-team .media-split__figure,
+.case-split--goc-model .media-split__figure {
+  float: left;
+  margin: 0 var(--space-l) var(--space-l) 0;
+}
+
+.frame--goc-hero,
+.frame--goc-nz,
+.frame--goc-team,
+.frame--goc-style,
+.frame--goc-account,
+.frame--goc-review,
+.frame--goc-model,
+.frame--goc-impact {
+  background-color: var(--color-white);
+}
+
+.frame--goc-hero { aspect-ratio: var(--case-fig-goc-hero); }
+.frame--goc-nz { aspect-ratio: var(--case-fig-goc-nz); }
+.frame--goc-team { aspect-ratio: var(--case-fig-goc-team); }
+.frame--goc-style { aspect-ratio: var(--case-fig-goc-style); }
+.frame--goc-account { aspect-ratio: var(--case-fig-goc-account); }
+.frame--goc-review { aspect-ratio: var(--case-fig-goc-review); }
+.frame--goc-model { aspect-ratio: var(--case-fig-goc-model); }
+.frame--goc-impact { aspect-ratio: var(--case-fig-goc-impact); }
+
+[class*="frame--goc"] > img {
+  object-position: top;
+}
+
+.frame--goc-team > img,
+.frame--goc-style > img {
+  object-fit: contain;
 }

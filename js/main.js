@@ -68,10 +68,12 @@
   /* ---- Active navigation link -------------------------------------------
      Marks the link for the current page with aria-current="page", which also
      drives the persistent underline in components.css. Doing this in one
-     place avoids hand-editing a modifier class into every page's header. */
+     place avoids hand-editing a modifier class into every page's header.
+     The avatar links to /about/, so it is matched here too; only the text
+     links carry the underline. */
 
   function initActiveLink() {
-    var links = document.querySelectorAll('.site-nav__link');
+    var links = document.querySelectorAll('.site-nav__link, .site-header__avatar');
     if (!links.length) return;
 
     // Normalize to a trailing slash so "/work" and "/work/index.html" both
@@ -159,6 +161,38 @@
     });
   }
 
+  /* ---- Work password gate -----------------------------------------------
+     Courtesy overlay on Work pages. The password is not real security; it
+     only keeps the case studies from being casually readable. A matching
+     inline script in each Work page <head> restores the unlocked state
+     from sessionStorage before paint. */
+
+  function initWorkGate() {
+    var gate = document.getElementById('work-gate');
+    var form = document.getElementById('work-gate-form');
+    if (!gate || !form) return;
+    if (document.documentElement.classList.contains('work-unlocked')) return;
+
+    var input = document.getElementById('work-gate-password');
+    var error = document.getElementById('work-gate-error');
+
+    if (input) input.focus();
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (input.value === 'Silveira') {
+        try {
+          sessionStorage.setItem('work-unlocked', '1');
+        } catch (err) { /* private mode may block storage */ }
+        document.documentElement.classList.add('work-unlocked');
+        return;
+      }
+      if (error) error.hidden = false;
+      input.value = '';
+      input.focus();
+    });
+  }
+
   /* ---- Boot -------------------------------------------------------------
      Each feature is isolated so a failure in one cannot stop the others. A
      reveal failure additionally un-hides the content it was managing. */
@@ -174,6 +208,7 @@
   run('nav', initNav);
   run('activeLink', initActiveLink);
   run('headerScroll', initHeaderScroll);
+  run('workGate', initWorkGate);
   run('reveal', function () {
     try {
       initReveal();
